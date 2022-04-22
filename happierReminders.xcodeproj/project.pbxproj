@@ -17,6 +17,7 @@
 		016849D82812A49B00436B3C /* happierRemindersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016849D72812A49B00436B3C /* happierRemindersTests.swift */; };
 		016849E22812A49B00436B3C /* happierRemindersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016849E12812A49B00436B3C /* happierRemindersUITests.swift */; };
 		016849E42812A49B00436B3C /* happierRemindersUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016849E32812A49B00436B3C /* happierRemindersUITestsLaunchTests.swift */; };
+		016849F22812A51600436B3C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016849F12812A51600436B3C /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		016849DD2812A49B00436B3C /* happierRemindersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = happierRemindersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		016849E12812A49B00436B3C /* happierRemindersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = happierRemindersUITests.swift; sourceTree = "<group>"; };
 		016849E32812A49B00436B3C /* happierRemindersUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = happierRemindersUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		016849F12812A51600436B3C /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		016849BC2812A49300436B3C /* happierReminders */ = {
 			isa = PBXGroup;
 			children = (
+				016849F02812A4D300436B3C /* Model */,
 				016849BD2812A49300436B3C /* AppDelegate.swift */,
 				016849BF2812A49300436B3C /* SceneDelegate.swift */,
 				016849C12812A49300436B3C /* ViewController.swift */,
@@ -108,7 +111,6 @@
 				016849C92812A49A00436B3C /* Assets.xcassets */,
 				016849CB2812A49A00436B3C /* LaunchScreen.storyboard */,
 				016849CE2812A49A00436B3C /* Info.plist */,
-				016849C62812A49300436B3C /* happierReminders.xcdatamodeld */,
 			);
 			path = happierReminders;
 			sourceTree = "<group>";
@@ -128,6 +130,15 @@
 				016849E32812A49B00436B3C /* happierRemindersUITestsLaunchTests.swift */,
 			);
 			path = happierRemindersUITests;
+			sourceTree = "<group>";
+		};
+		016849F02812A4D300436B3C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				016849C62812A49300436B3C /* happierReminders.xcdatamodeld */,
+				016849F12812A51600436B3C /* DataManager.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				016849C22812A49300436B3C /* ViewController.swift in Sources */,
+				016849F22812A51600436B3C /* DataManager.swift in Sources */,
 				016849BE2812A49300436B3C /* AppDelegate.swift in Sources */,
 				016849C02812A49300436B3C /* SceneDelegate.swift in Sources */,
 				016849C82812A49300436B3C /* happierReminders.xcdatamodeld in Sources */,
