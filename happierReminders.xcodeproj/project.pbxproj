@@ -1,0 +1,646 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		016849BE2812A49300436B3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016849BD2812A49300436B3C /* AppDelegate.swift */; };
+		016849C02812A49300436B3C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016849BF2812A49300436B3C /* SceneDelegate.swift */; };
+		016849C22812A49300436B3C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016849C12812A49300436B3C /* ViewController.swift */; };
+		016849C52812A49300436B3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 016849C32812A49300436B3C /* Main.storyboard */; };
+		016849C82812A49300436B3C /* happierReminders.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 016849C62812A49300436B3C /* happierReminders.xcdatamodeld */; };
+		016849CA2812A49A00436B3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 016849C92812A49A00436B3C /* Assets.xcassets */; };
+		016849CD2812A49A00436B3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 016849CB2812A49A00436B3C /* LaunchScreen.storyboard */; };
+		016849D82812A49B00436B3C /* happierRemindersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016849D72812A49B00436B3C /* happierRemindersTests.swift */; };
+		016849E22812A49B00436B3C /* happierRemindersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016849E12812A49B00436B3C /* happierRemindersUITests.swift */; };
+		016849E42812A49B00436B3C /* happierRemindersUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016849E32812A49B00436B3C /* happierRemindersUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		016849D42812A49B00436B3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 016849B22812A49300436B3C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 016849B92812A49300436B3C;
+			remoteInfo = happierReminders;
+		};
+		016849DE2812A49B00436B3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 016849B22812A49300436B3C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 016849B92812A49300436B3C;
+			remoteInfo = happierReminders;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		016849BA2812A49300436B3C /* happierReminders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = happierReminders.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		016849BD2812A49300436B3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		016849BF2812A49300436B3C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		016849C12812A49300436B3C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		016849C42812A49300436B3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		016849C72812A49300436B3C /* happierReminders.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = happierReminders.xcdatamodel; sourceTree = "<group>"; };
+		016849C92812A49A00436B3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		016849CC2812A49A00436B3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		016849CE2812A49A00436B3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		016849D32812A49B00436B3C /* happierRemindersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = happierRemindersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		016849D72812A49B00436B3C /* happierRemindersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = happierRemindersTests.swift; sourceTree = "<group>"; };
+		016849DD2812A49B00436B3C /* happierRemindersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = happierRemindersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		016849E12812A49B00436B3C /* happierRemindersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = happierRemindersUITests.swift; sourceTree = "<group>"; };
+		016849E32812A49B00436B3C /* happierRemindersUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = happierRemindersUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		016849B72812A49300436B3C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		016849D02812A49B00436B3C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		016849DA2812A49B00436B3C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		016849B12812A49300436B3C = {
+			isa = PBXGroup;
+			children = (
+				016849BC2812A49300436B3C /* happierReminders */,
+				016849D62812A49B00436B3C /* happierRemindersTests */,
+				016849E02812A49B00436B3C /* happierRemindersUITests */,
+				016849BB2812A49300436B3C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		016849BB2812A49300436B3C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				016849BA2812A49300436B3C /* happierReminders.app */,
+				016849D32812A49B00436B3C /* happierRemindersTests.xctest */,
+				016849DD2812A49B00436B3C /* happierRemindersUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		016849BC2812A49300436B3C /* happierReminders */ = {
+			isa = PBXGroup;
+			children = (
+				016849BD2812A49300436B3C /* AppDelegate.swift */,
+				016849BF2812A49300436B3C /* SceneDelegate.swift */,
+				016849C12812A49300436B3C /* ViewController.swift */,
+				016849C32812A49300436B3C /* Main.storyboard */,
+				016849C92812A49A00436B3C /* Assets.xcassets */,
+				016849CB2812A49A00436B3C /* LaunchScreen.storyboard */,
+				016849CE2812A49A00436B3C /* Info.plist */,
+				016849C62812A49300436B3C /* happierReminders.xcdatamodeld */,
+			);
+			path = happierReminders;
+			sourceTree = "<group>";
+		};
+		016849D62812A49B00436B3C /* happierRemindersTests */ = {
+			isa = PBXGroup;
+			children = (
+				016849D72812A49B00436B3C /* happierRemindersTests.swift */,
+			);
+			path = happierRemindersTests;
+			sourceTree = "<group>";
+		};
+		016849E02812A49B00436B3C /* happierRemindersUITests */ = {
+			isa = PBXGroup;
+			children = (
+				016849E12812A49B00436B3C /* happierRemindersUITests.swift */,
+				016849E32812A49B00436B3C /* happierRemindersUITestsLaunchTests.swift */,
+			);
+			path = happierRemindersUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		016849B92812A49300436B3C /* happierReminders */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 016849E72812A49B00436B3C /* Build configuration list for PBXNativeTarget "happierReminders" */;
+			buildPhases = (
+				016849B62812A49300436B3C /* Sources */,
+				016849B72812A49300436B3C /* Frameworks */,
+				016849B82812A49300436B3C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = happierReminders;
+			productName = happierReminders;
+			productReference = 016849BA2812A49300436B3C /* happierReminders.app */;
+			productType = "com.apple.product-type.application";
+		};
+		016849D22812A49B00436B3C /* happierRemindersTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 016849EA2812A49B00436B3C /* Build configuration list for PBXNativeTarget "happierRemindersTests" */;
+			buildPhases = (
+				016849CF2812A49B00436B3C /* Sources */,
+				016849D02812A49B00436B3C /* Frameworks */,
+				016849D12812A49B00436B3C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				016849D52812A49B00436B3C /* PBXTargetDependency */,
+			);
+			name = happierRemindersTests;
+			productName = happierRemindersTests;
+			productReference = 016849D32812A49B00436B3C /* happierRemindersTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		016849DC2812A49B00436B3C /* happierRemindersUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 016849ED2812A49B00436B3C /* Build configuration list for PBXNativeTarget "happierRemindersUITests" */;
+			buildPhases = (
+				016849D92812A49B00436B3C /* Sources */,
+				016849DA2812A49B00436B3C /* Frameworks */,
+				016849DB2812A49B00436B3C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				016849DF2812A49B00436B3C /* PBXTargetDependency */,
+			);
+			name = happierRemindersUITests;
+			productName = happierRemindersUITests;
+			productReference = 016849DD2812A49B00436B3C /* happierRemindersUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		016849B22812A49300436B3C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					016849B92812A49300436B3C = {
+						CreatedOnToolsVersion = 13.1;
+					};
+					016849D22812A49B00436B3C = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = 016849B92812A49300436B3C;
+					};
+					016849DC2812A49B00436B3C = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = 016849B92812A49300436B3C;
+					};
+				};
+			};
+			buildConfigurationList = 016849B52812A49300436B3C /* Build configuration list for PBXProject "happierReminders" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 016849B12812A49300436B3C;
+			productRefGroup = 016849BB2812A49300436B3C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				016849B92812A49300436B3C /* happierReminders */,
+				016849D22812A49B00436B3C /* happierRemindersTests */,
+				016849DC2812A49B00436B3C /* happierRemindersUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		016849B82812A49300436B3C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				016849CD2812A49A00436B3C /* LaunchScreen.storyboard in Resources */,
+				016849CA2812A49A00436B3C /* Assets.xcassets in Resources */,
+				016849C52812A49300436B3C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		016849D12812A49B00436B3C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		016849DB2812A49B00436B3C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		016849B62812A49300436B3C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				016849C22812A49300436B3C /* ViewController.swift in Sources */,
+				016849BE2812A49300436B3C /* AppDelegate.swift in Sources */,
+				016849C02812A49300436B3C /* SceneDelegate.swift in Sources */,
+				016849C82812A49300436B3C /* happierReminders.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		016849CF2812A49B00436B3C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				016849D82812A49B00436B3C /* happierRemindersTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		016849D92812A49B00436B3C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				016849E42812A49B00436B3C /* happierRemindersUITestsLaunchTests.swift in Sources */,
+				016849E22812A49B00436B3C /* happierRemindersUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		016849D52812A49B00436B3C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 016849B92812A49300436B3C /* happierReminders */;
+			targetProxy = 016849D42812A49B00436B3C /* PBXContainerItemProxy */;
+		};
+		016849DF2812A49B00436B3C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 016849B92812A49300436B3C /* happierReminders */;
+			targetProxy = 016849DE2812A49B00436B3C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		016849C32812A49300436B3C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				016849C42812A49300436B3C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		016849CB2812A49A00436B3C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				016849CC2812A49A00436B3C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		016849E52812A49B00436B3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		016849E62812A49B00436B3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		016849E82812A49B00436B3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 24SZHTJR7B;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = happierReminders/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shirblc.happierReminders;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		016849E92812A49B00436B3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 24SZHTJR7B;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = happierReminders/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shirblc.happierReminders;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		016849EB2812A49B00436B3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 24SZHTJR7B;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shirblc.happierRemindersTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/happierReminders.app/happierReminders";
+			};
+			name = Debug;
+		};
+		016849EC2812A49B00436B3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 24SZHTJR7B;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shirblc.happierRemindersTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/happierReminders.app/happierReminders";
+			};
+			name = Release;
+		};
+		016849EE2812A49B00436B3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 24SZHTJR7B;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shirblc.happierRemindersUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = happierReminders;
+			};
+			name = Debug;
+		};
+		016849EF2812A49B00436B3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 24SZHTJR7B;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shirblc.happierRemindersUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = happierReminders;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		016849B52812A49300436B3C /* Build configuration list for PBXProject "happierReminders" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				016849E52812A49B00436B3C /* Debug */,
+				016849E62812A49B00436B3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		016849E72812A49B00436B3C /* Build configuration list for PBXNativeTarget "happierReminders" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				016849E82812A49B00436B3C /* Debug */,
+				016849E92812A49B00436B3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		016849EA2812A49B00436B3C /* Build configuration list for PBXNativeTarget "happierRemindersTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				016849EB2812A49B00436B3C /* Debug */,
+				016849EC2812A49B00436B3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		016849ED2812A49B00436B3C /* Build configuration list for PBXNativeTarget "happierRemindersUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				016849EE2812A49B00436B3C /* Debug */,
+				016849EF2812A49B00436B3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		016849C62812A49300436B3C /* happierReminders.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				016849C72812A49300436B3C /* happierReminders.xcdatamodel */,
+			);
+			currentVersion = 016849C72812A49300436B3C /* happierReminders.xcdatamodel */;
+			path = happierReminders.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 016849B22812A49300436B3C /* Project object */;
+}
