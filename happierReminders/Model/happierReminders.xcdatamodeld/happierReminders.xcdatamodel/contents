@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Collection" representedClassName="Collection" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String" defaultValueString="Collection" allowsCloudEncryption="YES"/>
+        <attribute name="sendNotifications" attributeType="Boolean" defaultValueString="NO" allowsCloudEncryption="YES" usesScalarValueType="YES"/>
+        <relationship name="quotes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Quote" inverseName="collection" inverseEntity="Quote"/>
+    </entity>
+    <entity name="Quote" representedClassName="Quote" syncable="YES" codeGenerationType="class">
+        <attribute name="addedAt" optional="YES" attributeType="Date" allowsCloudEncryption="YES" usesScalarValueType="NO"/>
+        <attribute name="source" optional="YES" attributeType="String" allowsCloudEncryption="YES"/>
+        <attribute name="text" attributeType="String" allowsCloudEncryption="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" allowsCloudEncryption="YES"/>
+        <relationship name="collection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Collection" inverseName="quotes" inverseEntity="Collection"/>
+    </entity>
+    <elements>
+        <element name="Collection" positionX="-63" positionY="-18" width="128" height="74"/>
+        <element name="Quote" positionX="-54" positionY="9" width="128" height="104"/>
+    </elements>
 </model>
