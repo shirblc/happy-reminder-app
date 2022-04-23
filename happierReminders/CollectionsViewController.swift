@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CollectionsViewController.swift
 //  happierReminders
 //
 //  Created by Shir Bar Lev on 22/04/2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CollectionsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

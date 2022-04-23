@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		016849BE2812A49300436B3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016849BD2812A49300436B3C /* AppDelegate.swift */; };
 		016849C02812A49300436B3C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016849BF2812A49300436B3C /* SceneDelegate.swift */; };
-		016849C22812A49300436B3C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016849C12812A49300436B3C /* ViewController.swift */; };
+		016849C22812A49300436B3C /* CollectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016849C12812A49300436B3C /* CollectionsViewController.swift */; };
 		016849C52812A49300436B3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 016849C32812A49300436B3C /* Main.storyboard */; };
 		016849C82812A49300436B3C /* happierReminders.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 016849C62812A49300436B3C /* happierReminders.xcdatamodeld */; };
 		016849CA2812A49A00436B3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 016849C92812A49A00436B3C /* Assets.xcassets */; };
@@ -41,7 +41,7 @@
 		016849BA2812A49300436B3C /* happierReminders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = happierReminders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		016849BD2812A49300436B3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		016849BF2812A49300436B3C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		016849C12812A49300436B3C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		016849C12812A49300436B3C /* CollectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsViewController.swift; sourceTree = "<group>"; };
 		016849C42812A49300436B3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		016849C72812A49300436B3C /* happierReminders.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = happierReminders.xcdatamodel; sourceTree = "<group>"; };
 		016849C92812A49A00436B3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -106,7 +106,7 @@
 				016849F02812A4D300436B3C /* Model */,
 				016849BD2812A49300436B3C /* AppDelegate.swift */,
 				016849BF2812A49300436B3C /* SceneDelegate.swift */,
-				016849C12812A49300436B3C /* ViewController.swift */,
+				016849C12812A49300436B3C /* CollectionsViewController.swift */,
 				016849C32812A49300436B3C /* Main.storyboard */,
 				016849C92812A49A00436B3C /* Assets.xcassets */,
 				016849CB2812A49A00436B3C /* LaunchScreen.storyboard */,
@@ -272,7 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				016849C22812A49300436B3C /* ViewController.swift in Sources */,
+				016849C22812A49300436B3C /* CollectionsViewController.swift in Sources */,
 				016849F22812A51600436B3C /* DataManager.swift in Sources */,
 				016849BE2812A49300436B3C /* AppDelegate.swift in Sources */,
 				016849C02812A49300436B3C /* SceneDelegate.swift in Sources */,
