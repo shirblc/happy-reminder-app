@@ -17,6 +17,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+        self.loadPersistentStore()
+        let navigationController = window?.rootViewController as! UINavigationController
+        (navigationController.topViewController as! CollectionsViewController).dataManager = (UIApplication.shared.delegate as? AppDelegate)?.dataManager
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -48,6 +52,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Save changes in the application's managed object context when the application transitions to the background.
         (UIApplication.shared.delegate as? AppDelegate)?.dataManager.saveAllContexts()
+    }
+    
+    // loadPersistentStore
+    // Loads the persistent store
+    func loadPersistentStore() {
+        (UIApplication.shared.delegate as? AppDelegate)?.dataManager.loadPersistentStore(errorHandler: { error in
+            DispatchQueue.main.async {
+                let errorAlert = UIAlertController(title: "Error loading persistent storage", message: error.localizedDescription, preferredStyle: .alert)
+                errorAlert.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { _ in
+                    self.loadPersistentStore()
+                }))
+            }
+        })
     }
 }
 
