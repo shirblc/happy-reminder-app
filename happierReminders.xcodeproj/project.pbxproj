@@ -19,6 +19,7 @@
 		016849E42812A49B00436B3C /* happierRemindersUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016849E32812A49B00436B3C /* happierRemindersUITestsLaunchTests.swift */; };
 		016849F22812A51600436B3C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016849F12812A51600436B3C /* DataManager.swift */; };
 		016849F528154C0100436B3C /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016849F428154C0000436B3C /* CollectionTableViewCell.swift */; };
+		F0C0637E2815CA200012D745 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C0637D2815CA200012D745 /* AlertFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		016849E32812A49B00436B3C /* happierRemindersUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = happierRemindersUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		016849F12812A51600436B3C /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		016849F428154C0000436B3C /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
+		F0C0637D2815CA200012D745 /* AlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				016849F428154C0000436B3C /* CollectionTableViewCell.swift */,
+				F0C0637D2815CA200012D745 /* AlertFactory.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				016849F528154C0100436B3C /* CollectionTableViewCell.swift in Sources */,
 				016849F22812A51600436B3C /* DataManager.swift in Sources */,
 				016849BE2812A49300436B3C /* AppDelegate.swift in Sources */,
+				F0C0637E2815CA200012D745 /* AlertFactory.swift in Sources */,
 				016849C02812A49300436B3C /* SceneDelegate.swift in Sources */,
 				016849C82812A49300436B3C /* happierReminders.xcdatamodeld in Sources */,
 			);
