@@ -105,11 +105,11 @@
 		016849BC2812A49300436B3C /* happierReminders */ = {
 			isa = PBXGroup;
 			children = (
+				016849F62815A5AA00436B3C /* ViewControllers */,
 				016849F328154BA400436B3C /* Views */,
 				016849F02812A4D300436B3C /* Model */,
 				016849BD2812A49300436B3C /* AppDelegate.swift */,
 				016849BF2812A49300436B3C /* SceneDelegate.swift */,
-				016849C12812A49300436B3C /* CollectionsViewController.swift */,
 				016849C32812A49300436B3C /* Main.storyboard */,
 				016849C92812A49A00436B3C /* Assets.xcassets */,
 				016849CB2812A49A00436B3C /* LaunchScreen.storyboard */,
@@ -150,6 +150,14 @@
 				016849F428154C0000436B3C /* CollectionTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		016849F62815A5AA00436B3C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				016849C12812A49300436B3C /* CollectionsViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
