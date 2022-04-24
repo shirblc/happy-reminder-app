@@ -17,18 +17,17 @@ class DataManager {
     // init
     init() {
         viewContext = persistentContainer.viewContext
-        loadPersistentStore()
-        backgroundContext = persistentContainer.newBackgroundContext()
-        setupContexts()
     }
     
     // MARK: Setup methods
     // loadPersistentStore
     // Loads the persistent store
-    func loadPersistentStore() {
+    func loadPersistentStore(errorHandler: @escaping (Error) -> Void) {
         persistentContainer.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+            if let error = error {
+                errorHandler(error)
+            } else {
+                self.setupContexts()
             }
         })
     }
@@ -39,6 +38,7 @@ class DataManager {
         viewContext.automaticallyMergesChangesFromParent = true
         viewContext.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
 
+        backgroundContext = persistentContainer.newBackgroundContext()
         backgroundContext.automaticallyMergesChangesFromParent = true
         backgroundContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
     }
