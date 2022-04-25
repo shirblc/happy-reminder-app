@@ -11,12 +11,14 @@ import CoreData
 class DataManager {
     // MARK: Variables
     var persistentContainer: NSPersistentContainer = NSPersistentContainer(name: "happierReminders")
-    var viewContext: NSManagedObjectContext
+    var viewContext: NSManagedObjectContext {
+        return persistentContainer.viewContext
+    }
     var backgroundContext: NSManagedObjectContext!
     
     // init
     init() {
-        viewContext = persistentContainer.viewContext
+        
     }
     
     // MARK: Setup methods
