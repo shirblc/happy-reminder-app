@@ -69,4 +69,13 @@ class DataManager {
             }
         }
     }
+    
+    // deleteManagedObject
+    // Deletes a managed object and saves the context
+    func deleteManagedObject<T: NSManagedObject>(object: T, useViewContext: Bool, errorCallback: (Error) -> Void) {
+        let context = useViewContext ? viewContext : backgroundContext
+        
+        context?.delete(object)
+        saveContext(useViewContext: useViewContext, errorCallback: errorCallback)
+    }
 }
