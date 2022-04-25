@@ -28,11 +28,7 @@ extension CollectionsViewController: UITableViewDelegate, UITableViewDataSource 
     // MARK: UITableViewDelegate
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { action, view, handleActionPerformed in
-            let collectionToDelete = self.collectionsFRC.object(at: indexPath)
-            self.dataManager.viewContext.delete(collectionToDelete)
-            self.dataManager.saveContext(useViewContext: true) { error in
-                self.showErrorAlert(error: error, retryHandler: nil)
-            }
+            self.deleteCollection(indexPath: indexPath)
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }

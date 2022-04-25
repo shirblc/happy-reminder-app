@@ -123,4 +123,21 @@ class CollectionsViewController: UIViewController, NSFetchedResultsControllerDel
         
         AlertFactory.activeAlert?.actions.last?.isEnabled = true
     }
+    
+    // deleteCollection
+    // Deletes the collection at the given index path
+    func deleteCollection(indexPath: IndexPath) {
+        DispatchQueue.main.async {
+            let alert = AlertFactory.createConfirmAlert(title: "Delete Collection?") {
+                self.dismiss(animated: true)
+            } completionHandler: {
+                let collectionToDelete = self.collectionsFRC.object(at: indexPath)
+                self.dataManager.deleteManagedObject(object: collectionToDelete, useViewContext: true) { error in
+                    self.showErrorAlert(error: error, retryHandler: nil)
+                }
+                self.dismiss(animated: true)
+            }
+            self.present(alert, animated: true)
+        }
+    }
 }
