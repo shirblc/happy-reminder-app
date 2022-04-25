@@ -48,20 +48,15 @@
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <view contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="756" verticalCompressionResistancePriority="756" translatesAutoresizingMaskIntoConstraints="NO" id="uLF-Tp-jxf">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8PY-Fw-VCN">
                                                             <rect key="frame" x="182.5" y="0.0" width="182" height="45.5"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="760" verticalCompressionResistancePriority="760" translatesAutoresizingMaskIntoConstraints="NO" id="odY-Y5-4sV">
-                                                                    <rect key="frame" x="83.5" y="16.5" width="15" height="13"/>
+                                                                    <rect key="frame" x="0.0" y="16.5" width="182" height="13"/>
                                                                     <imageReference key="image" image="xmark" catalog="system" symbolScale="small"/>
                                                                 </imageView>
                                                             </subviews>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                            <constraints>
-                                                                <constraint firstItem="odY-Y5-4sV" firstAttribute="centerX" secondItem="uLF-Tp-jxf" secondAttribute="centerX" id="M5o-Py-8yn"/>
-                                                                <constraint firstItem="odY-Y5-4sV" firstAttribute="centerY" secondItem="uLF-Tp-jxf" secondAttribute="centerY" id="Yz9-Pv-J9Q"/>
-                                                            </constraints>
-                                                        </view>
+                                                        </stackView>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
