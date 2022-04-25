@@ -43,4 +43,18 @@ class AlertFactory {
         
         return alert
     }
+    
+    // createConfirmAlert
+    // Creates an alert to confirm before an action is taken
+    static func createConfirmAlert(title: String, cancelHandler: @escaping () -> Void, completionHandler: @escaping () -> Void) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: "This action is irreversible!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+            cancelHandler()
+        }))
+        alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { _ in
+            completionHandler()
+        }))
+        
+        return alert
+    }
 }
