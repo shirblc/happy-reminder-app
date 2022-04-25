@@ -9,9 +9,7 @@ import Foundation
 import UIKit
 
 class AlertFactory {
-    init() {
-        
-    }
+    static var activeAlert: UIAlertController?
     
     // createErrorAlert
     // Creates an error alert
@@ -26,5 +24,23 @@ class AlertFactory {
         }
         
         return errorAlert
+    }
+    
+    // createInputAlert
+    // Creates an input alert
+    static func createInputAlert(title: String, message: String, cancelHandler: @escaping () -> Void, completionHandler: @escaping (String) -> Void, errorMessage: String) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+            cancelHandler()
+        }))
+        alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { _ in
+            completionHandler(alert.textFields!.first!.text!)
+        }))
+        alert.actions.last?.isEnabled = false
+        alert.addTextField { textField in
+            textField.placeholder = message
+        }
+        
+        return alert
     }
 }
