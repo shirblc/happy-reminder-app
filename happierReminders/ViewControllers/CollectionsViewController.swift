@@ -10,7 +10,7 @@ import CoreData
 
 let reuseIdentifier = "collectionCellView"
 
-class CollectionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+class CollectionsViewController: UIViewController, NSFetchedResultsControllerDelegate {
     // MARK: Variables & Constants
     var dataManager: DataManager!
     var collectionsFRC: NSFetchedResultsController<Collection>!
@@ -24,22 +24,6 @@ class CollectionsViewController: UIViewController, UITableViewDelegate, UITableV
         self.setupFetchedResultsController()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createCollection))
         NotificationCenter.default.addObserver(self, selector: #selector(toggleContinueButton(textFieldNotification:)), name: UITextField.textDidChangeNotification, object: nil)
-    }
-    
-    // MARK: UITableViewDataSource
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return collectionsFRC.sections?[section].numberOfObjects ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellView = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! CollectionTableViewCell
-        let cellData = self.collectionsFRC.object(at: indexPath)
-        
-        cellView.titleLabel.text = cellData.name
-        cellView.subtitleLabel.text = "\(cellData.quotes?.count ?? 0)"
-        cellView.notificationIndicatorImage.image = cellData.sendNotifications ? UIImage(systemName: "checkmark") : UIImage(systemName: "xmark")
-        
-        return cellView
     }
     
     // MARK: Fetched Results Controller
