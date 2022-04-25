@@ -61,8 +61,11 @@ class CollectionsViewController: UIViewController, UITableViewDelegate, UITableV
     // Shows an error alert
     func showErrorAlert(error: Error, retryHandler: (() -> Void)?) {
         DispatchQueue.main.async {
-            let errorAlert = AlertFactory.createErrorAlert(error: error, dismissHandler: { _ in self.dismiss(animated: true)
+            let errorAlert = AlertFactory.createErrorAlert(error: error, dismissHandler: { _ in
+                AlertFactory.activeAlert = nil
+                self.dismiss(animated: true)
             }, retryHandler: retryHandler)
+            AlertFactory.activeAlert = errorAlert
             self.present(errorAlert, animated: false)
         }
     }
