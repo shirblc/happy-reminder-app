@@ -10,7 +10,7 @@ import CoreData
 
 let reuseIdentifier = "collectionCellView"
 
-class CollectionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CollectionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     // MARK: Variables & Constants
     var dataManager: DataManager!
     var collectionsFRC: NSFetchedResultsController<Collection>!
@@ -53,9 +53,34 @@ class CollectionsViewController: UIViewController, UITableViewDelegate, UITableV
         
         do {
             try collectionsFRC.performFetch()
+            collectionsFRC.delegate = self
         } catch {
             showErrorAlert(error: error, retryHandler: setupFetchedResultsController)
         }
+    }
+    
+    // NSFetchedResultsControllerDelegate
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            tableView.insertRows(at: [(indexPath ?? newIndexPath)!], with: .right)
+        case .delete:
+            tableView.deleteRows(at: [(indexPath ?? newIndexPath)!], with: .right)
+        case .move:
+            tableView.moveRow(at: indexPath!, to: newIndexPath!)
+        case .update:
+            tableView.reloadRows(at: [(indexPath ?? newIndexPath)!], with: .right)
+        @unknown default:
+            break
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.tableView.endUpdates()
     }
     
     // MARK: Helpers
