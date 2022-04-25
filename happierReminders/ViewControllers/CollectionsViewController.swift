@@ -22,6 +22,8 @@ class CollectionsViewController: UIViewController, UITableViewDelegate, UITableV
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.setupFetchedResultsController()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createCollection))
+        NotificationCenter.default.addObserver(self, selector: #selector(toggleContinueButton(textFieldNotification:)), name: UITextField.textDidChangeNotification, object: nil)
     }
     
     // MARK: UITableViewDataSource
@@ -68,5 +70,48 @@ class CollectionsViewController: UIViewController, UITableViewDelegate, UITableV
             AlertFactory.activeAlert = errorAlert
             self.present(errorAlert, animated: false)
         }
+    }
+    
+    // createCollection
+    // Shows the alert for creating a collection
+    @objc func createCollection() {        
+        DispatchQueue.main.async {
+            let alert = AlertFactory.createInputAlert(title: "Add Collection", message: "Enter collection name", cancelHandler: {
+                AlertFactory.activeAlert = nil
+                self.dismiss(animated: true)
+            }, completionHandler: self.addCollection(title:), errorMessage: "You must enter name for the new collection")
+            AlertFactory.activeAlert = alert
+            self.present(alert, animated: true)
+        }
+    }
+    
+    // addCollection
+    // Adds the collection to the store
+    func addCollection(title: String) {
+        dataManager.viewContext.perform {
+            let collection = Collection(context: self.dataManager.viewContext)
+            collection.name = title
+            collection.sendNotifications = false
+            
+            self.dataManager.saveContext(useViewContext: true) { error in
+                self.showErrorAlert(error: error) {
+                    self.addCollection(title: title)
+                }
+            }
+        }
+    }
+    
+    // toggleContinueButton
+    // Disables/enables the continue button depending on whether there's text
+    @objc func toggleContinueButton(textFieldNotification: NSNotification) {
+        let textField = textFieldNotification.object as! UITextField
+        
+        // make sure there's a name; otherwise disable the button
+        guard let text = textField.text, text.count > 0 else {
+            AlertFactory.activeAlert?.actions.last?.isEnabled = false
+            return
+        }
+        
+        AlertFactory.activeAlert?.actions.last?.isEnabled = true
     }
 }
