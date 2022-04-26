@@ -89,11 +89,41 @@
                     <navigationItem key="navigationItem" title="Collections" id="Ij9-Fe-kh5"/>
                     <connections>
                         <outlet property="tableView" destination="J4k-P9-rCo" id="gBA-P0-56m"/>
+                        <segue destination="j6M-Qa-Xwi" kind="show" identifier="viewCollectionSegue" id="qSG-fo-K1J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="820" y="84"/>
+        </scene>
+        <!--Quotes-->
+        <scene sceneID="wd2-f7-gfT">
+            <objects>
+                <tableViewController id="j6M-Qa-Xwi" customClass="QuotesViewController" customModule="happierReminders" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="C6d-xj-3g7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="quoteCellView" id="gXW-j0-SvY">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gXW-j0-SvY" id="0qb-Rw-Tj7">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="j6M-Qa-Xwi" id="AhJ-rn-ijU"/>
+                            <outlet property="delegate" destination="j6M-Qa-Xwi" id="CwI-O3-XYD"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Quotes" id="LUJ-yh-e4J"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PSe-HJ-1e3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1717" y="84"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vQW-Jc-cBt">
