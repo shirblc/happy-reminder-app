@@ -8,6 +8,8 @@
 import UIKit
 
 class QuotesViewController: UITableViewController {
+    var dataManager: DataManager!
+    var collection: Collection!
 
     override func viewDidLoad() {
         super.viewDidLoad()

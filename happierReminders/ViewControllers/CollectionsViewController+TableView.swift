@@ -32,4 +32,8 @@ extension CollectionsViewController: UITableViewDelegate, UITableViewDataSource 
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "viewCollectionSegue", sender: collectionsFRC.object(at: indexPath))
+    }
 }

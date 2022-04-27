@@ -81,6 +81,16 @@ class CollectionsViewController: UIViewController, NSFetchedResultsControllerDel
         }
     }
     
+    // prepare for segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "viewCollectionSegue" {
+            let quotesTableVC = segue.destination as! QuotesViewController
+            quotesTableVC.dataManager = dataManager
+            quotesTableVC.collection = sender as? Collection
+        }
+    }
+    
+    // MARK: Collections
     // createCollection
     // Shows the alert for creating a collection
     @objc func createCollection() {        
