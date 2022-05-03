@@ -89,41 +89,63 @@
                     <navigationItem key="navigationItem" title="Collections" id="Ij9-Fe-kh5"/>
                     <connections>
                         <outlet property="tableView" destination="J4k-P9-rCo" id="gBA-P0-56m"/>
-                        <segue destination="j6M-Qa-Xwi" kind="show" identifier="viewCollectionSegue" id="qSG-fo-K1J"/>
+                        <segue destination="pzQ-Jv-hhb" kind="show" identifier="viewCollectionSegue" id="53J-gZ-k0i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="820" y="84"/>
         </scene>
-        <!--Quotes-->
-        <scene sceneID="wd2-f7-gfT">
+        <!--Manage-->
+        <scene sceneID="tYb-hu-efu">
             <objects>
-                <tableViewController id="j6M-Qa-Xwi" customClass="QuotesViewController" customModule="happierReminders" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="C6d-xj-3g7">
+                <viewController title="Manage" id="aO7-X8-xxs" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tBx-NM-ZNi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="TIZ-ST-Vap"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="quoteCellView" id="gXW-j0-SvY">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gXW-j0-SvY" id="0qb-Rw-Tj7">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="j6M-Qa-Xwi" id="AhJ-rn-ijU"/>
-                            <outlet property="delegate" destination="j6M-Qa-Xwi" id="CwI-O3-XYD"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Quotes" id="LUJ-yh-e4J"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PSe-HJ-1e3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Manage" image="gearshape" catalog="system" id="Qo2-FM-5Mt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RIq-GC-A7v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1717" y="84"/>
+            <point key="canvasLocation" x="2691" y="387"/>
+        </scene>
+        <!--Quotes-->
+        <scene sceneID="osW-h7-eb7">
+            <objects>
+                <viewController title="Quotes" id="0OA-rl-1bd" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XYX-5M-W7e">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="FBI-Pm-ciD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Quotes" image="quote.bubble" catalog="system" id="5SB-qP-VjZ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r6Y-R2-Btg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2690" y="-220"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="FWv-kH-nkU">
+            <objects>
+                <tabBarController id="pzQ-Jv-hhb" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="FhJ-tR-Ox2"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sX5-zZ-Ww9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="0OA-rl-1bd" kind="relationship" relationship="viewControllers" id="R4c-du-8Cd"/>
+                        <segue destination="aO7-X8-xxs" kind="relationship" relationship="viewControllers" id="4Wq-Qp-hcJ"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7fD-6c-fH5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1646" y="89"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vQW-Jc-cBt">
@@ -145,6 +167,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="quote.bubble" catalog="system" width="128" height="110"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
