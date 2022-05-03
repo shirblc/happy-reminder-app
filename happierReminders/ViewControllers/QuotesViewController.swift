@@ -20,6 +20,11 @@ class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate
         setupFetchedResultsController()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setupFetchedResultsController()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         quotesFRC = nil
