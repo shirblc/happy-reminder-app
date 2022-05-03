@@ -78,4 +78,17 @@ class DataManager {
         context?.delete(object)
         saveContext(useViewContext: useViewContext, errorCallback: errorCallback)
     }
+    
+    // MARK: NSFetchedResultsController Helpers
+    // setupFRC
+    // Creates an NSFetchedResultsController with the given information
+    func setupFRC<T: NSManagedObject>(managedClass: String, predicate: NSPredicate?, sortDescriptors: [NSSortDescriptor], cacheName: String) -> NSFetchedResultsController<T> {
+        let fetchRequest: NSFetchRequest<T> = NSFetchRequest(entityName: managedClass)
+        fetchRequest.predicate = predicate
+        fetchRequest.sortDescriptors = sortDescriptors
+        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: viewContext, sectionNameKeyPath: nil, cacheName: cacheName)
+        
+        return fetchedResultsController
+    }
 }

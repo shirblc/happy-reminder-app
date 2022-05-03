@@ -35,10 +35,7 @@ class CollectionsViewController: UIViewController, NSFetchedResultsControllerDel
     // setupFetchedResultsController
     // Sets up the FetchedResultsController
     func setupFetchedResultsController() {
-        let fetchRequest = Collection.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: false)]
-        
-        collectionsFRC = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataManager.viewContext, sectionNameKeyPath: nil, cacheName: "collections")
+        collectionsFRC = dataManager.setupFRC(managedClass: "Collection", predicate: nil, sortDescriptors: [NSSortDescriptor(key: "name", ascending: false)], cacheName: "collections")
         
         do {
             try collectionsFRC.performFetch()

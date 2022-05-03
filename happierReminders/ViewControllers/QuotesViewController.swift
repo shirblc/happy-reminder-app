@@ -29,11 +29,7 @@ class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate
     // setupFetchedResultsController
     // Sets up the fetched results controller for the current collection
     func setupFetchedResultsController() {
-        let fetchRequest = Quote.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "collection == %@", collection)
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "addedAt", ascending: false), NSSortDescriptor(key: "text", ascending: false)]
-        
-        quotesFRC = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataManager.viewContext, sectionNameKeyPath: nil, cacheName: "collection\(String(describing: collection.name))Quotes")
+        quotesFRC = dataManager.setupFRC(managedClass: "Quote", predicate: NSPredicate(format: "collection == %@", collection), sortDescriptors: [NSSortDescriptor(key: "addedAt", ascending: false), NSSortDescriptor(key: "text", ascending: false)], cacheName: "collection\(String(describing: collection.name))Quotes")
         
         do {
             try quotesFRC.performFetch()
