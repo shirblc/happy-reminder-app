@@ -26,6 +26,11 @@ class CollectionsViewController: UIViewController, NSFetchedResultsControllerDel
         NotificationCenter.default.addObserver(self, selector: #selector(toggleContinueButton(textFieldNotification:)), name: UITextField.textDidChangeNotification, object: nil)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.collectionsFRC = nil
+    }
+    
     // MARK: Fetched Results Controller
     // setupFetchedResultsController
     // Sets up the FetchedResultsController
