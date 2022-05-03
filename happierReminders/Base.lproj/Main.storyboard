@@ -110,23 +110,35 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RIq-GC-A7v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2691" y="387"/>
+            <point key="canvasLocation" x="2690" y="439"/>
         </scene>
         <!--Quotes-->
         <scene sceneID="osW-h7-eb7">
             <objects>
-                <viewController title="Quotes" id="0OA-rl-1bd" sceneMemberID="viewController">
+                <viewController title="Quotes" id="0OA-rl-1bd" customClass="QuotesViewController" customModule="happierReminders" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XYX-5M-W7e">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="S48-Hh-Cw0">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="FBI-Pm-ciD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="S48-Hh-Cw0" firstAttribute="top" secondItem="FBI-Pm-ciD" secondAttribute="top" id="6Ze-LK-kxu"/>
+                            <constraint firstItem="S48-Hh-Cw0" firstAttribute="bottom" secondItem="FBI-Pm-ciD" secondAttribute="bottom" id="Tfr-UK-L11"/>
+                            <constraint firstItem="S48-Hh-Cw0" firstAttribute="leading" secondItem="FBI-Pm-ciD" secondAttribute="leading" id="dZv-OA-tS7"/>
+                            <constraint firstItem="S48-Hh-Cw0" firstAttribute="trailing" secondItem="FBI-Pm-ciD" secondAttribute="trailing" id="uof-3F-zUz"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Quotes" image="quote.bubble" catalog="system" id="5SB-qP-VjZ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r6Y-R2-Btg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2690" y="-220"/>
+            <point key="canvasLocation" x="2689.8550724637685" y="-220.3125"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="FWv-kH-nkU">
