@@ -21,7 +21,7 @@ class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        viewWillDisappear(animated)
+        super.viewWillDisappear(animated)
         quotesFRC = nil
     }
     

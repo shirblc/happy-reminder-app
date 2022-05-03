@@ -86,7 +86,7 @@ class CollectionsViewController: UIViewController, NSFetchedResultsControllerDel
     // prepare for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "viewCollectionSegue" {
-            let quotesTableVC = segue.destination as! QuotesViewController
+            let quotesTableVC = (segue.destination as! UITabBarController).viewControllers![0] as! QuotesViewController
             quotesTableVC.dataManager = dataManager
             quotesTableVC.collection = sender as? Collection
         }
