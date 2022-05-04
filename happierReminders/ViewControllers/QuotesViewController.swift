@@ -8,16 +8,20 @@
 import UIKit
 import CoreData
 
-class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate {
+
+class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource {
     // MARK: Variables & Constants
     var dataManager: DataManager!
     var collection: Collection!
     var quotesFRC: NSFetchedResultsController<Quote>!
-
+    let reuseIdentifier = "quoteCellView"
+    @IBOutlet weak var tableView: UITableView!
+    
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupFetchedResultsController()
+        tableView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +48,22 @@ class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate
         }
     }
     
+    // MARK: UITableViewDataSource
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let quoteForCellView = quotesFRC.object(at: indexPath)
+        let cellView = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+        var cellContent = cellView.defaultContentConfiguration()
+        cellContent.text = quoteForCellView.text
+        cellContent.secondaryText = quoteForCellView.source
+        
+        return cellView
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return quotesFRC?.sections?[section].numberOfObjects ?? 0
+    }
+    
+    // MARK: Utils
     // showErrorAlert
     // Shows an error alert
     func showErrorAlert(error: Error, retryHandler: (() -> Void)?) {

@@ -8,12 +8,12 @@
 import UIKit
 import CoreData
 
-let reuseIdentifier = "collectionCellView"
 
 class CollectionsViewController: UIViewController, NSFetchedResultsControllerDelegate {
     // MARK: Variables & Constants
     var dataManager: DataManager!
     var collectionsFRC: NSFetchedResultsController<Collection>!
+    let reuseIdentifier = "collectionCellView"
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: Lifecycle
