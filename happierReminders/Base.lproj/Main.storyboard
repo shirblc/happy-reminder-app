@@ -163,11 +163,28 @@
                     <tabBarItem key="tabBarItem" title="Quotes" image="quote.bubble" catalog="system" id="5SB-qP-VjZ"/>
                     <connections>
                         <outlet property="tableView" destination="S48-Hh-Cw0" id="nNL-dd-Z7S"/>
+                        <segue destination="Mkq-6I-hl3" kind="show" identifier="addQuoteSegue" id="8xr-xr-AMA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r6Y-R2-Btg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2689.8550724637685" y="-220.3125"/>
+        </scene>
+        <!--Add Quote View Controller-->
+        <scene sceneID="6P0-D1-WOs">
+            <objects>
+                <viewController id="Mkq-6I-hl3" customClass="AddQuoteViewController" customModule="happierReminders" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zRm-WR-JjP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="rUY-LI-lTL"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="4jj-P6-px9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="asQ-7f-qSN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3593" y="-466"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="FWv-kH-nkU">

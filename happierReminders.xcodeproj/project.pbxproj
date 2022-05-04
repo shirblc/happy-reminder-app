@@ -22,6 +22,7 @@
 		F080C4452816CE8F00DEB4CE /* CollectionsViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F080C4442816CE8F00DEB4CE /* CollectionsViewController+TableView.swift */; };
 		F0C0637E2815CA200012D745 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C0637D2815CA200012D745 /* AlertFactory.swift */; };
 		F0C1E9072821139200DF8B63 /* QuotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C1E9062821139200DF8B63 /* QuotesViewController.swift */; };
+		F0C1E9092822F36900DF8B63 /* AddQuoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C1E9082822F36900DF8B63 /* AddQuoteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		F080C4442816CE8F00DEB4CE /* CollectionsViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionsViewController+TableView.swift"; sourceTree = "<group>"; };
 		F0C0637D2815CA200012D745 /* AlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
 		F0C1E9062821139200DF8B63 /* QuotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesViewController.swift; sourceTree = "<group>"; };
+		F0C1E9082822F36900DF8B63 /* AddQuoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuoteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				016849C12812A49300436B3C /* CollectionsViewController.swift */,
 				F080C4442816CE8F00DEB4CE /* CollectionsViewController+TableView.swift */,
 				F0C1E9062821139200DF8B63 /* QuotesViewController.swift */,
+				F0C1E9082822F36900DF8B63 /* AddQuoteViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				016849C02812A49300436B3C /* SceneDelegate.swift in Sources */,
 				F0C1E9072821139200DF8B63 /* QuotesViewController.swift in Sources */,
 				016849C82812A49300436B3C /* happierReminders.xcdatamodeld in Sources */,
+				F0C1E9092822F36900DF8B63 /* AddQuoteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
