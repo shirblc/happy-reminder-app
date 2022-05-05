@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -170,21 +171,84 @@
             </objects>
             <point key="canvasLocation" x="2689.8550724637685" y="-220.3125"/>
         </scene>
-        <!--Add Quote View Controller-->
+        <!--New Quote-->
         <scene sceneID="6P0-D1-WOs">
             <objects>
                 <viewController id="Mkq-6I-hl3" customClass="AddQuoteViewController" customModule="happierReminders" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zRm-WR-JjP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="P2N-N1-WmU">
+                                <rect key="frame" x="8" y="96" width="398" height="774"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Quote" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="QxX-gY-y1B">
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="413"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="300" verticalHuggingPriority="750" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hHM-D7-2jq" userLabel="Source Stack View">
+                                        <rect key="frame" x="0.0" y="421" width="398" height="34"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Said by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v6Q-zd-U3H">
+                                                <rect key="frame" x="0.0" y="7" width="56" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="259" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the source (optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tFr-z3-Ox9">
+                                                <rect key="frame" x="64" y="0.0" width="334" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quote Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFl-Ju-OD0">
+                                        <rect key="frame" x="0.0" y="463" width="398" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BQ5-zZ-a0N">
+                                        <rect key="frame" x="0.0" y="491.5" width="398" height="216"/>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="300" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEm-zC-w25">
+                                        <rect key="frame" x="0.0" y="715.5" width="398" height="35.5"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Add Quote">
+                                            <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u38-cl-oCJ">
+                                        <rect key="frame" x="0.0" y="759" width="398" height="15"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="15" id="pyp-kw-aOm"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="rUY-LI-lTL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="P2N-N1-WmU" firstAttribute="bottom" secondItem="rUY-LI-lTL" secondAttribute="bottom" constant="8" id="60c-ry-6Mn"/>
+                            <constraint firstItem="P2N-N1-WmU" firstAttribute="leading" secondItem="rUY-LI-lTL" secondAttribute="leading" constant="8" id="BjU-ZI-ZdM"/>
+                            <constraint firstItem="P2N-N1-WmU" firstAttribute="trailing" secondItem="rUY-LI-lTL" secondAttribute="trailing" constant="-8" id="CbK-I1-d4q"/>
+                            <constraint firstItem="P2N-N1-WmU" firstAttribute="top" secondItem="rUY-LI-lTL" secondAttribute="top" constant="8" id="f9H-mB-GlU"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="4jj-P6-px9"/>
+                    <navigationItem key="navigationItem" title="New Quote" id="4jj-P6-px9"/>
+                    <connections>
+                        <outlet property="addButton" destination="aEm-zC-w25" id="SFo-9c-zKb"/>
+                        <outlet property="quoteSourceTextField" destination="tFr-z3-Ox9" id="5d5-kg-PPx"/>
+                        <outlet property="quoteTextTextField" destination="QxX-gY-y1B" id="EHg-N1-FuR"/>
+                        <outlet property="quoteTypePicker" destination="BQ5-zZ-a0N" id="7Cq-3q-mpE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="asQ-7f-qSN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3593" y="-466"/>
+            <point key="canvasLocation" x="3592.753623188406" y="-466.07142857142856"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="FWv-kH-nkU">
