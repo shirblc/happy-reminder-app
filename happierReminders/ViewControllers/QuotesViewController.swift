@@ -24,16 +24,13 @@ class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
-        
-        // set up the bar button
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addQuote))
-        tabBarController?.navigationItem.rightBarButtonItems = [addButton]
-        tabBarController?.title = collection.name
+        self.setupTopToolbar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setupFetchedResultsController()
+        tableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -63,7 +60,17 @@ class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate
         }
     }
     
-    // MARK: UITableViewDataSource
+    // setupTopToolbar
+    // Sets up the top toolbar's items & title
+    func setupTopToolbar() {
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addQuote))
+        let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(startEdit))
+        let finishedEditButton = UIBarButtonItem(title: "Finish", style: .done, target: self, action: #selector(stopEdit))
+        tabBarController?.navigationItem.rightBarButtonItems = tableView.isEditing ? [addButton, finishedEditButton] : [addButton, editButton]
+        tabBarController?.title = collection.name
+    }
+    
+    // MARK: UITableViewDataSource & UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let quoteForCellView = quotesFRC.object(at: indexPath)
         let cellView = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
@@ -79,6 +86,43 @@ class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate
         return quotesFRC?.sections?[section].numberOfObjects ?? 0
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if(editingStyle == .delete) {
+            dataManager.viewContext.perform {
+                let quoteToDelete = self.quotesFRC.object(at: indexPath)
+                self.dataManager.viewContext.delete(quoteToDelete)
+                self.dataManager.saveContext(useViewContext: true) { error in
+                    self.showErrorAlert(error: error, retryHandler: nil)
+                }
+            }
+        }
+    }
+    
+    // MARK: NSFetchedResultsControllerDelegate
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch(type) {
+        case .insert:
+            self.tableView.insertRows(at: [newIndexPath!], with: .left)
+        case .update:
+            self.tableView.reloadRows(at: [indexPath!], with: .left)
+        case .delete:
+            self.tableView.deleteRows(at: [indexPath!], with: .left)
+        case .move:
+            self.tableView.moveRow(at: indexPath!, to: newIndexPath!)
+        @unknown default:
+            print("This isn't implemented yet...")
+            self.tableView.reloadData()
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
     // MARK: Utils
     // showErrorAlert
     // Shows an error alert
@@ -91,6 +135,20 @@ class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate
             AlertFactory.activeAlert = alert
             self.present(alert, animated: true)
         }
+    }
+    
+    // startEdit
+    // Starts editing mode
+    @objc func startEdit() {
+        tableView.setEditing(true, animated: true)
+        setupTopToolbar()
+    }
+    
+    // stopEdit
+    // Exits editing mode
+    @objc func stopEdit() {
+        tableView.setEditing(false, animated: true)
+        setupTopToolbar()
     }
     
     // addQuote
