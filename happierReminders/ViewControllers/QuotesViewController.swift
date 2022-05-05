@@ -22,6 +22,13 @@ class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate
         super.viewDidLoad()
         setupFetchedResultsController()
         tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        
+        // set up the bar button
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addQuote))
+        tabBarController?.navigationItem.rightBarButtonItems = [addButton]
+        tabBarController?.title = collection.name
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,6 +39,14 @@ class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         quotesFRC = nil
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "addQuoteSegue") {
+            let addQuoteVC = segue.destination as! AddQuoteViewController
+            addQuoteVC.dataManager = self.dataManager
+            addQuoteVC.collection = self.collection
+        }
     }
     
     // MARK: Setup
@@ -55,6 +70,7 @@ class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate
         var cellContent = cellView.defaultContentConfiguration()
         cellContent.text = quoteForCellView.text
         cellContent.secondaryText = quoteForCellView.source
+        cellView.contentConfiguration = cellContent
         
         return cellView
     }
@@ -70,8 +86,25 @@ class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate
         DispatchQueue.main.async {
             let alert = AlertFactory.createErrorAlert(error: error, dismissHandler: { _ in
                 self.dismiss(animated: true)
+                AlertFactory.activeAlert = nil
             }, retryHandler: retryHandler)
             AlertFactory.activeAlert = alert
+            self.present(alert, animated: true)
+        }
+    }
+    
+    // addQuote
+    // Lets users choose where to get a quote from
+    @objc func addQuote() {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Add Quote", message: "Select source for the quote", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Write your own", style: .default) { _ in
+                self.performSegue(withIdentifier: "addQuoteSegue", sender: nil)
+            })
+            // TODO: Add the option to fetch from the internet
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+                self.dismiss(animated: true)
+            }))
             self.present(alert, animated: true)
         }
     }
