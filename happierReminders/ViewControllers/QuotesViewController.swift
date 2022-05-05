@@ -43,6 +43,10 @@ class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate
             let addQuoteVC = segue.destination as! AddQuoteViewController
             addQuoteVC.dataManager = self.dataManager
             addQuoteVC.collection = self.collection
+            
+            if let sender = sender as? Quote {
+                addQuoteVC.quote = sender
+            }
         }
     }
     
@@ -88,14 +92,18 @@ class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if(editingStyle == .delete) {
-            dataManager.viewContext.perform {
-                let quoteToDelete = self.quotesFRC.object(at: indexPath)
-                self.dataManager.viewContext.delete(quoteToDelete)
-                self.dataManager.saveContext(useViewContext: true) { error in
-                    self.showErrorAlert(error: error, retryHandler: nil)
-                }
-            }
+            deleteQuote(indexPath: indexPath)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { action, view, handleActionPerformed in
+            self.deleteQuote(indexPath: indexPath)
+        }
+        let editAction = UIContextualAction(style: .normal, title: "Edit") { action, view, handleActionPerformed in
+            self.performSegue(withIdentifier: "addQuoteSegue", sender: self.quotesFRC.object(at: indexPath))
+        }
+        return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
     }
     
     // MARK: NSFetchedResultsControllerDelegate
@@ -164,6 +172,16 @@ class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate
                 self.dismiss(animated: true)
             }))
             self.present(alert, animated: true)
+        }
+    }
+    
+    func deleteQuote(indexPath: IndexPath) {
+        dataManager.viewContext.perform {
+            let quoteToDelete = self.quotesFRC.object(at: indexPath)
+            self.dataManager.viewContext.delete(quoteToDelete)
+            self.dataManager.saveContext(useViewContext: true) { error in
+                self.showErrorAlert(error: error, retryHandler: nil)
+            }
         }
     }
 }

@@ -11,6 +11,7 @@ class AddQuoteViewController: UIViewController, UIPickerViewDataSource, UIPicker
     // MARK: Variables & Constants
     var dataManager: DataManager!
     var collection: Collection!
+    var quote: Quote?
     var quoteSaved: Bool = true
     let datePickerOptions = ["Affirmation", "Insperational", "Motivational", "Personal", "Zen"]
     @IBOutlet weak var quoteTextTextField: UITextField!
@@ -25,6 +26,7 @@ class AddQuoteViewController: UIViewController, UIPickerViewDataSource, UIPicker
         quoteTypePicker.delegate = self
         addButton.isEnabled = false
         NotificationCenter.default.addObserver(self, selector: #selector(handleTextfieldChange), name: UITextField.textDidChangeNotification, object: nil)
+        setupScreenData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -44,7 +46,31 @@ class AddQuoteViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return datePickerOptions[row]
     }
     
-    // MARK: Functionality
+    // MARK: UI/Controls Handling
+    // setupScreenData
+    // Sets up the inputs, title and button depending on whether we're editing or creating a quote
+    func setupScreenData() {
+        // If there's a quote, set up the screen for edit
+        if let quote = quote {
+            quoteTextTextField.text = quote.text
+            quoteSourceTextField.text = quote.source
+            
+            if let type = quote.type {
+                quoteTypePicker.selectRow(datePickerOptions.firstIndex(of: type) ?? 0, inComponent: 0, animated: true)
+            }
+            
+            navigationController?.title = "Edit Quote"
+            addButton.setTitle("Save Quote", for: .normal)
+            addButton.addTarget(self, action: #selector(editQuote(_:)), for: .touchUpInside)
+            addButton.isEnabled = true
+        // Otherwise set it up for create
+        } else {
+            navigationController?.title = "Add Quote"
+            addButton.setTitle("Add Quote", for: .normal)
+            addButton.addTarget(self, action: #selector(addQuote(_:)), for: .touchUpInside)
+        }
+    }
+    
     // handleTextfieldChange
     // Handles changes to the text fields
     @objc func handleTextfieldChange(textFieldNotification: NSNotification) {
@@ -55,26 +81,6 @@ class AddQuoteViewController: UIViewController, UIPickerViewDataSource, UIPicker
                 addButton.isEnabled = true
             } else {
                 addButton.isEnabled = false
-            }
-        }
-    }
-    
-    // addQuote
-    // Adds a new quote
-    @IBAction func addQuote(_ sender: Any) {
-        dataManager.viewContext.perform {
-            let newQuote = Quote(context: self.dataManager.viewContext)
-            newQuote.text = self.quoteTextTextField.text
-            newQuote.source = self.quoteSourceTextField.text
-            newQuote.type = self.datePickerOptions[self.quoteTypePicker.selectedRow(inComponent: 0)]
-            newQuote.addedAt = Date()
-            newQuote.collection = self.collection
-            
-            self.dataManager.saveContext(useViewContext: true, errorCallback: self.showErrorAlert)
-            
-            // if the quote was saved, go back to the quotes VC
-            if(self.quoteSaved) {
-                self.navigationController?.popViewController(animated: true)
             }
         }
     }
@@ -90,6 +96,54 @@ class AddQuoteViewController: UIViewController, UIPickerViewDataSource, UIPicker
             }, retryHandler: nil)
             AlertFactory.activeAlert = alert
             self.present(alert, animated: true)
+        }
+    }
+    
+    // MARK: Quote Manipulation
+    // addQuote
+    // Adds a new quote
+    @objc func addQuote(_ sender: Any) {
+        dataManager.backgroundContext.perform {
+            let newQuote = Quote(context: self.dataManager.backgroundContext)
+            newQuote.addedAt = Date()
+            newQuote.collection = self.dataManager.backgroundContext.object(with: self.collection.objectID) as? Collection
+            self.setUpAndSaveQuote(quoteToSave: newQuote)
+        }
+    }
+    
+    // editQuote
+    // Edits an existing quote
+    @objc func editQuote(_ sender: Any) {
+        guard let quote = quote else { return }
+
+        dataManager.backgroundContext.perform {
+            let editedQuote = self.dataManager.backgroundContext.object(with: quote.objectID) as! Quote
+            self.setUpAndSaveQuote(quoteToSave: editedQuote)
+        }
+    }
+    
+    // saveQuote
+    // Sets up the new/edited Quote's properties and saves t
+    func setUpAndSaveQuote(quoteToSave: Quote) {
+        DispatchQueue.main.async {
+            let quoteText = self.quoteTextTextField.text
+            let quoteSource = self.quoteSourceTextField.text
+            let quoteType = self.datePickerOptions[self.quoteTypePicker.selectedRow(inComponent: 0)]
+            
+            self.dataManager.backgroundContext.perform {
+                quoteToSave.text = quoteText
+                quoteToSave.source = quoteSource
+                quoteToSave.type = quoteType
+                
+                self.dataManager.saveContext(useViewContext: false, errorCallback: self.showErrorAlert)
+                
+                // if the quote was saved, go back to the quotes VC
+                if(self.quoteSaved) {
+                    DispatchQueue.main.async {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
+            }
         }
     }
 }
