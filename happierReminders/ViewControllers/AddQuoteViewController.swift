@@ -8,6 +8,10 @@
 import UIKit
 
 class AddQuoteViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+    // MARK: Variables & Constants
+    var dataManager: DataManager!
+    var collection: Collection!
+    var quoteSaved: Bool = true
     let datePickerOptions = ["Affirmation", "Insperational", "Motivational", "Personal", "Zen"]
     @IBOutlet weak var quoteTextTextField: UITextField!
     @IBOutlet weak var quoteSourceTextField: UITextField!
@@ -52,6 +56,40 @@ class AddQuoteViewController: UIViewController, UIPickerViewDataSource, UIPicker
             } else {
                 addButton.isEnabled = false
             }
+        }
+    }
+    
+    // addQuote
+    // Adds a new quote
+    @IBAction func addQuote(_ sender: Any) {
+        dataManager.viewContext.perform {
+            let newQuote = Quote(context: self.dataManager.viewContext)
+            newQuote.text = self.quoteTextTextField.text
+            newQuote.source = self.quoteSourceTextField.text
+            newQuote.type = self.datePickerOptions[self.quoteTypePicker.selectedRow(inComponent: 0)]
+            newQuote.addedAt = Date()
+            newQuote.collection = self.collection
+            
+            self.dataManager.saveContext(useViewContext: true, errorCallback: self.showErrorAlert)
+            
+            // if the quote was saved, go back to the quotes VC
+            if(self.quoteSaved) {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+    
+    // showErrorAlert
+    // Shows an error alert
+    func showErrorAlert(error: Error) {
+        DispatchQueue.main.async {
+            let alert = AlertFactory.createErrorAlert(error: error, dismissHandler: { _ in
+                self.dismiss(animated: true)
+                AlertFactory.activeAlert = nil
+                self.quoteSaved = false
+            }, retryHandler: nil)
+            AlertFactory.activeAlert = alert
+            self.present(alert, animated: true)
         }
     }
 }

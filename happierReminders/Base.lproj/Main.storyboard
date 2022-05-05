@@ -210,7 +210,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BQ5-zZ-a0N">
-                                        <rect key="frame" x="0.0" y="491.5" width="398" height="216"/>
+                                        <rect key="frame" x="0.0" y="492" width="398" height="216"/>
                                     </pickerView>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="300" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEm-zC-w25">
                                         <rect key="frame" x="0.0" y="715.5" width="398" height="35.5"/>
@@ -218,6 +218,9 @@
                                         <buttonConfiguration key="configuration" style="plain" title="Add Quote">
                                             <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="18"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="addQuote:" destination="Mkq-6I-hl3" eventType="touchUpInside" id="LpI-KM-LmT"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u38-cl-oCJ">
                                         <rect key="frame" x="0.0" y="759" width="398" height="15"/>
