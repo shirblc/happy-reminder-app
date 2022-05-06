@@ -9,8 +9,6 @@ import UIKit
 
 class ManageViewController: UIViewController {
     // MARK: Variables & Constants
-    var dataManager: DataManager!
-    var collection: Collection!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var sendNotificationsSwitch: UISwitch!
     @IBOutlet weak var timeSelectionPicker: UIDatePicker!
@@ -21,8 +19,8 @@ class ManageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.navigationItem.rightBarButtonItems = []
-        nameTextField.text = collection.name
-        sendNotificationsSwitch.isOn = collection.sendNotifications
+        nameTextField.text = (tabBarController as? CollectionTabBarViewController)!.collection.name
+        sendNotificationsSwitch.isOn = (tabBarController as? CollectionTabBarViewController)!.collection.sendNotifications
         sendNotificationsSwitch.addTarget(self, action: #selector(toggleNotificationUI), for: .valueChanged)
         toggleNotificationUI()
         NotificationCenter.default.addObserver(self, selector: #selector(toggleSaveButton(textFieldNotification:)), name: UITextField.textDidChangeNotification, object: nil)

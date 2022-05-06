@@ -20,6 +20,7 @@
 		016849F22812A51600436B3C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016849F12812A51600436B3C /* DataManager.swift */; };
 		016849F528154C0100436B3C /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016849F428154C0000436B3C /* CollectionTableViewCell.swift */; };
 		F08099902825720100902DFC /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F080998F2825720100902DFC /* Checkbox.swift */; };
+		F08099922825903000902DFC /* CollectionTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08099912825903000902DFC /* CollectionTabBarViewController.swift */; };
 		F080C4452816CE8F00DEB4CE /* CollectionsViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F080C4442816CE8F00DEB4CE /* CollectionsViewController+TableView.swift */; };
 		F0C0637E2815CA200012D745 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C0637D2815CA200012D745 /* AlertFactory.swift */; };
 		F0C1E9072821139200DF8B63 /* QuotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C1E9062821139200DF8B63 /* QuotesViewController.swift */; };
@@ -62,6 +63,7 @@
 		016849F12812A51600436B3C /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		016849F428154C0000436B3C /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
 		F080998F2825720100902DFC /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
+		F08099912825903000902DFC /* CollectionTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTabBarViewController.swift; sourceTree = "<group>"; };
 		F080C4442816CE8F00DEB4CE /* CollectionsViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionsViewController+TableView.swift"; sourceTree = "<group>"; };
 		F0C0637D2815CA200012D745 /* AlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
 		F0C1E9062821139200DF8B63 /* QuotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				F0C1E9062821139200DF8B63 /* QuotesViewController.swift */,
 				F0C1E9082822F36900DF8B63 /* AddQuoteViewController.swift */,
 				F0C1E9162824569600DF8B63 /* ManageViewController.swift */,
+				F08099912825903000902DFC /* CollectionTabBarViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				016849BE2812A49300436B3C /* AppDelegate.swift in Sources */,
 				F0C0637E2815CA200012D745 /* AlertFactory.swift in Sources */,
 				016849C02812A49300436B3C /* SceneDelegate.swift in Sources */,
+				F08099922825903000902DFC /* CollectionTabBarViewController.swift in Sources */,
 				F08099902825720100902DFC /* Checkbox.swift in Sources */,
 				F0C1E9072821139200DF8B63 /* QuotesViewController.swift in Sources */,
 				016849C82812A49300436B3C /* happierReminders.xcdatamodeld in Sources */,

@@ -385,10 +385,10 @@
             </objects>
             <point key="canvasLocation" x="3675" y="-220"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Collection Tab Bar View Controller-->
         <scene sceneID="FWv-kH-nkU">
             <objects>
-                <tabBarController id="pzQ-Jv-hhb" sceneMemberID="viewController">
+                <tabBarController id="pzQ-Jv-hhb" customClass="CollectionTabBarViewController" customModule="happierReminders" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="FhJ-tR-Ox2"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sX5-zZ-Ww9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>

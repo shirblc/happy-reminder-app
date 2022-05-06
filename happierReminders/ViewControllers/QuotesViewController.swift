@@ -24,6 +24,8 @@ class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        dataManager = (tabBarController as? CollectionTabBarViewController)?.dataManager
+        collection = (tabBarController as? CollectionTabBarViewController)?.collection
         self.setupTopToolbar()
     }
     
