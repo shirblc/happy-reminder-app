@@ -100,18 +100,153 @@
         <!--Manage-->
         <scene sceneID="tYb-hu-efu">
             <objects>
-                <viewController title="Manage" id="aO7-X8-xxs" sceneMemberID="viewController">
+                <viewController title="Manage" id="aO7-X8-xxs" customClass="ManageViewController" customModule="happierReminders" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tBx-NM-ZNi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="wTb-bq-03z">
+                                <rect key="frame" x="8" y="96" width="398" height="505"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dpY-aJ-Hgr" userLabel="Collection Name Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collection Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4b-3z-TVo">
+                                                <rect key="frame" x="0.0" y="15" width="199" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MOO-xn-TBc">
+                                                <rect key="frame" x="199" y="8" width="199" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="AAe-h6-mWh">
+                                        <rect key="frame" x="0.0" y="65" width="398" height="50"/>
+                                        <subviews>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SGb-Dn-EGG">
+                                                <rect key="frame" x="0.0" y="9.5" width="51" height="31"/>
+                                            </switch>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kUO-Il-PqF">
+                                                <rect key="frame" x="59" y="15" width="339" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Y4a-Id-zXx">
+                                        <rect key="frame" x="0.0" y="130" width="398" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select time and days for notifications:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ton-dp-Yhl">
+                                                <rect key="frame" x="0.0" y="15" width="398" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Giy-Ej-PJK">
+                                        <rect key="frame" x="0.0" y="195" width="398" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZt-Ii-Sdk" customClass="Checkbox" customModule="happierReminders" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="199" height="50"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Sunday"/>
+                                            </button>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dGr-b1-DNb" customClass="Checkbox" customModule="happierReminders" customModuleProvider="target">
+                                                <rect key="frame" x="199" y="0.0" width="199" height="50"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Monday"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qer-Bj-tlm">
+                                        <rect key="frame" x="0.0" y="260" width="398" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDV-L1-oKA" customClass="Checkbox" customModule="happierReminders" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="199" height="50"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Tuesday"/>
+                                            </button>
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhB-zi-UwL" customClass="Checkbox" customModule="happierReminders" customModuleProvider="target">
+                                                <rect key="frame" x="199" y="0.0" width="199" height="50"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Wednesday"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YOt-t5-1R8">
+                                        <rect key="frame" x="0.0" y="325" width="398" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4L-bs-YhE" customClass="Checkbox" customModule="happierReminders" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="199" height="50"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Thursday"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Thursday"/>
+                                            </button>
+                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XS4-Kd-AoR" customClass="Checkbox" customModule="happierReminders" customModuleProvider="target">
+                                                <rect key="frame" x="199" y="0.0" width="199" height="50"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Friday"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="iJN-I4-Jxe">
+                                        <rect key="frame" x="0.0" y="390" width="398" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgU-E7-VXu" customClass="Checkbox" customModule="happierReminders" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="199" height="50"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Saturday"/>
+                                            </button>
+                                            <datePicker contentMode="scaleAspectFit" horizontalHuggingPriority="260" verticalHuggingPriority="259" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="Izb-Kw-4Fe">
+                                                <rect key="frame" x="199" y="0.0" width="199" height="50"/>
+                                            </datePicker>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jNo-fN-w1J">
+                                        <rect key="frame" x="0.0" y="455" width="398" height="50"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Save">
+                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="18"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="saveSettings:" destination="aO7-X8-xxs" eventType="touchUpInside" id="OtV-CR-hys"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="TIZ-ST-Vap"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wTb-bq-03z" firstAttribute="top" secondItem="TIZ-ST-Vap" secondAttribute="top" constant="8" id="JDl-gl-Ndv"/>
+                            <constraint firstItem="TIZ-ST-Vap" firstAttribute="trailing" secondItem="wTb-bq-03z" secondAttribute="trailing" constant="8" id="KC6-Jc-VOG"/>
+                            <constraint firstItem="wTb-bq-03z" firstAttribute="leading" secondItem="TIZ-ST-Vap" secondAttribute="leading" constant="8" id="Pcn-lf-NMg"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Manage" image="gearshape" catalog="system" id="Qo2-FM-5Mt"/>
+                    <connections>
+                        <outlet property="nameTextField" destination="MOO-xn-TBc" id="K0u-mL-ruJ"/>
+                        <outlet property="saveButton" destination="jNo-fN-w1J" id="tgo-Uu-Xm7"/>
+                        <outlet property="sendNotificationsSwitch" destination="SGb-Dn-EGG" id="Ta4-fs-IsP"/>
+                        <outlet property="timeSelectionPicker" destination="Izb-Kw-4Fe" id="AIV-wQ-hM6"/>
+                        <outletCollection property="dayCheckboxes" destination="bZt-Ii-Sdk" collectionClass="NSMutableArray" id="OqE-of-RNF"/>
+                        <outletCollection property="dayCheckboxes" destination="dGr-b1-DNb" collectionClass="NSMutableArray" id="ZnP-kS-7SD"/>
+                        <outletCollection property="dayCheckboxes" destination="WDV-L1-oKA" collectionClass="NSMutableArray" id="N7a-j6-ftQ"/>
+                        <outletCollection property="dayCheckboxes" destination="IhB-zi-UwL" collectionClass="NSMutableArray" id="cSG-3G-vWb"/>
+                        <outletCollection property="dayCheckboxes" destination="F4L-bs-YhE" collectionClass="NSMutableArray" id="r7h-vV-fCM"/>
+                        <outletCollection property="dayCheckboxes" destination="XS4-Kd-AoR" collectionClass="NSMutableArray" id="Wkl-L1-pAX"/>
+                        <outletCollection property="dayCheckboxes" destination="dgU-E7-VXu" collectionClass="NSMutableArray" id="sMG-FG-dOg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RIq-GC-A7v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2690" y="439"/>
+            <point key="canvasLocation" x="2689.8550724637685" y="438.61607142857139"/>
         </scene>
         <!--Quotes-->
         <scene sceneID="osW-h7-eb7">
@@ -248,7 +383,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="asQ-7f-qSN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3592.753623188406" y="-466.07142857142856"/>
+            <point key="canvasLocation" x="3675" y="-220"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="FWv-kH-nkU">

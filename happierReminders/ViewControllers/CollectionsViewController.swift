@@ -66,6 +66,7 @@ class CollectionsViewController: UIViewController, NSFetchedResultsControllerDel
         case .update:
             tableView.reloadRows(at: [(indexPath ?? newIndexPath)!], with: .right)
         @unknown default:
+            print("This isn't implemented yet...")
             break
         }
     }
@@ -91,9 +92,13 @@ class CollectionsViewController: UIViewController, NSFetchedResultsControllerDel
     // prepare for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "viewCollectionSegue" {
-            let quotesTableVC = (segue.destination as! UITabBarController).viewControllers![0] as! QuotesViewController
+            let tabBarController = segue.destination as! UITabBarController
+            let quotesTableVC = tabBarController.viewControllers![0] as! QuotesViewController
             quotesTableVC.dataManager = dataManager
             quotesTableVC.collection = sender as? Collection
+            let settingsVC = tabBarController.viewControllers![1] as! ManageViewController
+            settingsVC.dataManager = dataManager
+            settingsVC.collection = sender as? Collection
         }
     }
     
