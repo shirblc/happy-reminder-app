@@ -21,6 +21,7 @@
 		016849F528154C0100436B3C /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016849F428154C0000436B3C /* CollectionTableViewCell.swift */; };
 		F08099902825720100902DFC /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F080998F2825720100902DFC /* Checkbox.swift */; };
 		F08099922825903000902DFC /* CollectionTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08099912825903000902DFC /* CollectionTabBarViewController.swift */; };
+		F080999428259F4E00902DFC /* NotificationArrayTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F080999328259F4E00902DFC /* NotificationArrayTransformer.swift */; };
 		F080C4452816CE8F00DEB4CE /* CollectionsViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F080C4442816CE8F00DEB4CE /* CollectionsViewController+TableView.swift */; };
 		F0C0637E2815CA200012D745 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C0637D2815CA200012D745 /* AlertFactory.swift */; };
 		F0C1E9072821139200DF8B63 /* QuotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C1E9062821139200DF8B63 /* QuotesViewController.swift */; };
@@ -64,6 +65,7 @@
 		016849F428154C0000436B3C /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
 		F080998F2825720100902DFC /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		F08099912825903000902DFC /* CollectionTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTabBarViewController.swift; sourceTree = "<group>"; };
+		F080999328259F4E00902DFC /* NotificationArrayTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationArrayTransformer.swift; sourceTree = "<group>"; };
 		F080C4442816CE8F00DEB4CE /* CollectionsViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionsViewController+TableView.swift"; sourceTree = "<group>"; };
 		F0C0637D2815CA200012D745 /* AlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
 		F0C1E9062821139200DF8B63 /* QuotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			children = (
 				016849C62812A49300436B3C /* happierReminders.xcdatamodeld */,
 				016849F12812A51600436B3C /* DataManager.swift */,
+				F080999328259F4E00902DFC /* NotificationArrayTransformer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 			files = (
 				F080C4452816CE8F00DEB4CE /* CollectionsViewController+TableView.swift in Sources */,
 				016849C22812A49300436B3C /* CollectionsViewController.swift in Sources */,
+				F080999428259F4E00902DFC /* NotificationArrayTransformer.swift in Sources */,
 				F0C1E9172824569600DF8B63 /* ManageViewController.swift in Sources */,
 				016849F528154C0100436B3C /* CollectionTableViewCell.swift in Sources */,
 				016849F22812A51600436B3C /* DataManager.swift in Sources */,
