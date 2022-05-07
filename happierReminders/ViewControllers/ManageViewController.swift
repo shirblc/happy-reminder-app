@@ -9,7 +9,6 @@ import UIKit
 
 class ManageViewController: UIViewController {
     // MARK: Variables & Constants
-    let checkboxToDayMapping = [1: "Sunday", 2: "Monday", 3: "Tuesday", 4: "Wednesday", 5: "Thursday", 6: "Friday", 7: "Saturday"]
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var sendNotificationsSwitch: UISwitch!
     @IBOutlet weak var timeSelectionPicker: UIDatePicker!
@@ -40,9 +39,8 @@ class ManageViewController: UIViewController {
         }
         
         for checkbox in dayCheckboxes {
-            let checkboxDay = checkboxToDayMapping[checkbox.tag]
-            let notificationDays: [String] = ((tabBarController as? CollectionTabBarViewController)!.collection.notificationDays ?? []) as! [String]
-            checkbox.isSelected = notificationDays.contains(checkboxDay!) ? true : false
+            let notificationDays: [Int] = ((tabBarController as? CollectionTabBarViewController)!.collection.notificationDays ?? []) as! [Int]
+            checkbox.isSelected = notificationDays.contains(checkbox.tag) ? true : false
         }
     }
     
@@ -89,11 +87,11 @@ class ManageViewController: UIViewController {
         let newName = nameTextField.text
         let sendNotifications = sendNotificationsSwitch.isOn
         let notificationTime = timeSelectionPicker.date
-        var selectedDays: [String] = []
+        var selectedDays: [Int] = []
         
         for checkbox in dayCheckboxes {
             if(checkbox.isSelected) {
-                selectedDays.append(checkboxToDayMapping[checkbox.tag]!)
+                selectedDays.append(checkbox.tag)
             }
         }
         
