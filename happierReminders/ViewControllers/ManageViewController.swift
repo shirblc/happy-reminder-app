@@ -32,7 +32,12 @@ class ManageViewController: UIViewController {
     func setupControlsValues() {
         nameTextField.text = (tabBarController as? CollectionTabBarViewController)!.collection.name
         sendNotificationsSwitch.isOn = (tabBarController as? CollectionTabBarViewController)!.collection.sendNotifications
-        timeSelectionPicker.date = (tabBarController as? CollectionTabBarViewController)!.collection.notificationTime ?? Date()
+        let notificationTime = (tabBarController as? CollectionTabBarViewController)!.collection.notificationTime?.split(separator: ":")
+        
+        if let hour = notificationTime?[0], let minutes = notificationTime?[1] {
+            let date = DateComponents(calendar: .current, timeZone: nil, era: nil, year: nil, month: nil, day: nil, hour: Int(hour), minute: Int(minutes), second: 0, nanosecond: 0, weekday: nil, weekdayOrdinal: nil, quarter: nil, weekOfMonth: nil, weekOfYear: nil, yearForWeekOfYear: nil)
+            timeSelectionPicker.date = date.date ?? Date()
+        }
         
         for checkbox in dayCheckboxes {
             let checkboxDay = checkboxToDayMapping[checkbox.tag]
@@ -64,6 +69,18 @@ class ManageViewController: UIViewController {
         saveButton.isEnabled = true
     }
     
+    // MARK: Data Handling
+    // translateDateTimeToString
+    // Translates the datetime selected to the required CoreData dict
+    func translateDateTimeToString(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .none
+        formatter.timeStyle = .full
+        let stringTimeParts = formatter.string(from: date).split(separator: ":")
+        
+        return String(stringTimeParts[0]) + ":" + String(stringTimeParts[1])
+    }
+    
     // saveSettings
     // Saves the settings
     @IBAction func saveSettings(_ sender: UIButton) {
@@ -86,7 +103,7 @@ class ManageViewController: UIViewController {
             collection.sendNotifications = sendNotifications
             
             if(sendNotifications) {
-                collection.notificationTime = notificationTime
+                collection.notificationTime = self.translateDateTimeToString(date: notificationTime)
                 collection.notificationDays = selectedDays as NSArray
             }
             
