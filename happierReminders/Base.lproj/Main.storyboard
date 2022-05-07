@@ -152,12 +152,12 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Giy-Ej-PJK">
                                         <rect key="frame" x="0.0" y="195" width="398" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZt-Ii-Sdk" customClass="Checkbox" customModule="happierReminders" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZt-Ii-Sdk" customClass="Checkbox" customModule="happierReminders" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="199" height="50"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Sunday"/>
                                             </button>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dGr-b1-DNb" customClass="Checkbox" customModule="happierReminders" customModuleProvider="target">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dGr-b1-DNb" customClass="Checkbox" customModule="happierReminders" customModuleProvider="target">
                                                 <rect key="frame" x="199" y="0.0" width="199" height="50"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Monday"/>
@@ -167,12 +167,12 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qer-Bj-tlm">
                                         <rect key="frame" x="0.0" y="260" width="398" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDV-L1-oKA" customClass="Checkbox" customModule="happierReminders" customModuleProvider="target">
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDV-L1-oKA" customClass="Checkbox" customModule="happierReminders" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="199" height="50"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Tuesday"/>
                                             </button>
-                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhB-zi-UwL" customClass="Checkbox" customModule="happierReminders" customModuleProvider="target">
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhB-zi-UwL" customClass="Checkbox" customModule="happierReminders" customModuleProvider="target">
                                                 <rect key="frame" x="199" y="0.0" width="199" height="50"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Wednesday"/>
@@ -182,13 +182,13 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YOt-t5-1R8">
                                         <rect key="frame" x="0.0" y="325" width="398" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4L-bs-YhE" customClass="Checkbox" customModule="happierReminders" customModuleProvider="target">
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4L-bs-YhE" customClass="Checkbox" customModule="happierReminders" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="199" height="50"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Thursday"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Thursday"/>
                                             </button>
-                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XS4-Kd-AoR" customClass="Checkbox" customModule="happierReminders" customModuleProvider="target">
+                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XS4-Kd-AoR" customClass="Checkbox" customModule="happierReminders" customModuleProvider="target">
                                                 <rect key="frame" x="199" y="0.0" width="199" height="50"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Friday"/>
@@ -198,7 +198,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="iJN-I4-Jxe">
                                         <rect key="frame" x="0.0" y="390" width="398" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgU-E7-VXu" customClass="Checkbox" customModule="happierReminders" customModuleProvider="target">
+                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgU-E7-VXu" customClass="Checkbox" customModule="happierReminders" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="199" height="50"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Saturday"/>
