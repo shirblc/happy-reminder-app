@@ -10,7 +10,7 @@ import CoreData
 
 final class NotificationArrayTransformer: NSSecureUnarchiveFromDataTransformer {
     override static var allowedTopLevelClasses: [AnyClass] {
-        return [NSArray.self]
+        return [NSArray.self, NSNumber.self]
     }
     
     public static func register() {
