@@ -9,6 +9,7 @@ import UIKit
 
 class ManageViewController: UIViewController {
     // MARK: Variables & Constants
+    let checkboxToDayMapping = [1: "Sunday", 2: "Monday", 3: "Tuesday", 4: "Wednesday", 5: "Thursday", 6: "Friday", 7: "Saturday"]
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var sendNotificationsSwitch: UISwitch!
     @IBOutlet weak var timeSelectionPicker: UIDatePicker!
@@ -19,14 +20,28 @@ class ManageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.navigationItem.rightBarButtonItems = []
-        nameTextField.text = (tabBarController as? CollectionTabBarViewController)!.collection.name
-        sendNotificationsSwitch.isOn = (tabBarController as? CollectionTabBarViewController)!.collection.sendNotifications
-        sendNotificationsSwitch.addTarget(self, action: #selector(toggleNotificationUI), for: .valueChanged)
+        setupControlsValues()
         toggleNotificationUI()
+        sendNotificationsSwitch.addTarget(self, action: #selector(toggleNotificationUI), for: .valueChanged)
         NotificationCenter.default.addObserver(self, selector: #selector(toggleSaveButton(textFieldNotification:)), name: UITextField.textDidChangeNotification, object: nil)
     }
     
     // MARK: UI/Controls Handling
+    // setupControlsValues
+    // Sets up the controls to reflect the Collection's values
+    func setupControlsValues() {
+        nameTextField.text = (tabBarController as? CollectionTabBarViewController)!.collection.name
+        sendNotificationsSwitch.isOn = (tabBarController as? CollectionTabBarViewController)!.collection.sendNotifications
+        timeSelectionPicker.date = (tabBarController as? CollectionTabBarViewController)!.collection.notificationTime ?? Date()
+        
+        for checkbox in dayCheckboxes {
+            let checkboxDay = checkboxToDayMapping[checkbox.tag]
+            let notificationDays: [String] = ((tabBarController as? CollectionTabBarViewController)!.collection.notificationDays ?? []) as! [String]
+            checkbox.isSelected = notificationDays.contains(checkboxDay!) ? true : false
+        }
+    }
+    
+    // toggleNotificationUI
     // Disables/enables the notification-related UI controls depending on whether sendNotifications is true or false
     @objc func toggleNotificationUI() {
         for checkbox in dayCheckboxes {
@@ -52,6 +67,39 @@ class ManageViewController: UIViewController {
     // saveSettings
     // Saves the settings
     @IBAction func saveSettings(_ sender: UIButton) {
-        // TODO
+        let dataManager = (tabBarController as? CollectionTabBarViewController)!.dataManager
+        let collectionID = (self.tabBarController as? CollectionTabBarViewController)!.collection.objectID
+        let newName = nameTextField.text
+        let sendNotifications = sendNotificationsSwitch.isOn
+        let notificationTime = timeSelectionPicker.date
+        var selectedDays: [String] = []
+        
+        for checkbox in dayCheckboxes {
+            if(checkbox.isSelected) {
+                selectedDays.append(checkboxToDayMapping[checkbox.tag]!)
+            }
+        }
+        
+        dataManager?.backgroundContext.perform {
+            let collection = dataManager?.backgroundContext.object(with: collectionID) as! Collection
+            collection.name = newName
+            collection.sendNotifications = sendNotifications
+            
+            if(sendNotifications) {
+                collection.notificationTime = notificationTime
+                collection.notificationDays = selectedDays as NSArray
+            }
+            
+            dataManager?.saveContext(useViewContext: false, errorCallback: { error in
+                DispatchQueue.main.async {
+                    let alert = AlertFactory.createErrorAlert(error: error, dismissHandler: { _ in
+                        self.dismiss(animated: true)
+                        AlertFactory.activeAlert = nil
+                    }, retryHandler: nil)
+                    AlertFactory.activeAlert = alert
+                    self.present(alert, animated: true)
+                }
+            })
+        }
     }
 }
