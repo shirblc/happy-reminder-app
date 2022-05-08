@@ -81,34 +81,32 @@ class NotificationController {
     
     // scheduleNotifications
     // Schedules notifications based on the user's settings
-    func scheduleNotifications(notificationsData: UserNotificationData, permissionDeniedHandler: @escaping () -> Void, errorHandler: @escaping (Error) -> Void, successHandler: @escaping ([String]) -> Void) {
-        Task(priority: .medium) {
-            let authorisedNotifications = await getNotificationsAuthorisationStatus(errorHandler: errorHandler)
-            
-            // make sure we have permission to send notifications
-            guard authorisedNotifications else {
-                permissionDeniedHandler()
-                return
-            }
-            
-            let notificationRequests = buildNotificationRequest(daysOfWeek: notificationsData.daysOfWeek, time: notificationsData.time, quoteText: notificationsData.quoteType, quoteType: notificationsData.quoteText)
-            
-            // add the requests and keep track of sent notification IDs
-            for request in notificationRequests {
-                do {
-                    try await notificationCentre.add(request)
-                    
-                    if(scheduledNotificationIdentifiers.keys.contains(notificationsData.collectionID)) {
-                        scheduledNotificationIdentifiers[notificationsData.collectionID]?.append(request.identifier)
-                    } else {
-                        scheduledNotificationIdentifiers[notificationsData.collectionID] = [request.identifier]
-                    }
-                } catch {
-                    errorHandler(error)
-                }
-            }
-            
-            successHandler(scheduledNotificationIdentifiers[notificationsData.collectionID] ?? [])
+    func scheduleNotifications(notificationsData: UserNotificationData, permissionDeniedHandler: @escaping () -> Void, errorHandler: @escaping (Error) -> Void) async -> [String] {
+        let authorisedNotifications = await getNotificationsAuthorisationStatus(errorHandler: errorHandler)
+        
+        // make sure we have permission to send notifications
+        guard authorisedNotifications else {
+            permissionDeniedHandler()
+            return []
         }
+        
+        let notificationRequests = buildNotificationRequest(daysOfWeek: notificationsData.daysOfWeek, time: notificationsData.time, quoteText: notificationsData.quoteType, quoteType: notificationsData.quoteText)
+        
+        // add the requests and keep track of sent notification IDs
+        for request in notificationRequests {
+            do {
+                try await notificationCentre.add(request)
+                
+                if(scheduledNotificationIdentifiers.keys.contains(notificationsData.collectionID)) {
+                    scheduledNotificationIdentifiers[notificationsData.collectionID]?.append(request.identifier)
+                } else {
+                    scheduledNotificationIdentifiers[notificationsData.collectionID] = [request.identifier]
+                }
+            } catch {
+                errorHandler(error)
+            }
+        }
+        
+        return scheduledNotificationIdentifiers[notificationsData.collectionID] ?? []
     }
 }
