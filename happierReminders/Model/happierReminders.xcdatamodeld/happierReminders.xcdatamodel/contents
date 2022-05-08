@@ -2,8 +2,9 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Collection" representedClassName="Collection" syncable="YES" codeGenerationType="class">
         <attribute name="name" attributeType="String" defaultValueString="Collection" allowsCloudEncryption="YES"/>
-        <attribute name="notificationDays" optional="YES" attributeType="Transformable" valueTransformerName="NotificationArrayTransformer" allowsCloudEncryption="YES" customClassName="NSArray"/>
+        <attribute name="notificationDays" optional="YES" attributeType="Transformable" valueTransformerName="NotificationDaysArrayTransformer" allowsCloudEncryption="YES" customClassName="NSArray"/>
         <attribute name="notificationTime" optional="YES" attributeType="String" valueTransformerName="NotificationTimeTransformer" allowsCloudEncryption="YES" customClassName="NSDictionary"/>
+        <attribute name="scheduledNotifications" attributeType="Transformable" valueTransformerName="ScheduledNotificationArrayTransformer" allowsCloudEncryption="YES" customClassName="NSArray"/>
         <attribute name="sendNotifications" attributeType="Boolean" defaultValueString="NO" allowsCloudEncryption="YES" usesScalarValueType="YES"/>
         <attribute name="uuid" attributeType="UUID" allowsCloudEncryption="YES" usesScalarValueType="NO"/>
         <relationship name="quotes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Quote" inverseName="collection" inverseEntity="Quote"/>
@@ -16,7 +17,7 @@
         <relationship name="collection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Collection" inverseName="quotes" inverseEntity="Collection"/>
     </entity>
     <elements>
-        <element name="Collection" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="Collection" positionX="-63" positionY="-18" width="128" height="134"/>
         <element name="Quote" positionX="-54" positionY="9" width="128" height="104"/>
     </elements>
 </model>

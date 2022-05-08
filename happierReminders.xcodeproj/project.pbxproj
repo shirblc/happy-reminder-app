@@ -23,7 +23,7 @@
 		F049764A2827ED9F00DCC4BA /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = F04976492827ED9F00DCC4BA /* Collections */; };
 		F049764C2827ED9F00DCC4BA /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = F049764B2827ED9F00DCC4BA /* OrderedCollections */; };
 		F08099922825903000902DFC /* CollectionTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08099912825903000902DFC /* CollectionTabBarViewController.swift */; };
-		F080999428259F4E00902DFC /* NotificationArrayTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F080999328259F4E00902DFC /* NotificationArrayTransformer.swift */; };
+		F080999428259F4E00902DFC /* CollecionArrayTransformers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F080999328259F4E00902DFC /* CollecionArrayTransformers.swift */; };
 		F08099962826341700902DFC /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08099952826341700902DFC /* NotificationController.swift */; };
 		F080C4452816CE8F00DEB4CE /* CollectionsViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F080C4442816CE8F00DEB4CE /* CollectionsViewController+TableView.swift */; };
 		F0C0637E2815CA200012D745 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C0637D2815CA200012D745 /* AlertFactory.swift */; };
@@ -68,7 +68,7 @@
 		016849F428154C0000436B3C /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
 		F04976462827CCCC00DCC4BA /* Select.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Select.swift; sourceTree = "<group>"; };
 		F08099912825903000902DFC /* CollectionTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTabBarViewController.swift; sourceTree = "<group>"; };
-		F080999328259F4E00902DFC /* NotificationArrayTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationArrayTransformer.swift; sourceTree = "<group>"; };
+		F080999328259F4E00902DFC /* CollecionArrayTransformers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollecionArrayTransformers.swift; sourceTree = "<group>"; };
 		F08099952826341700902DFC /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		F080C4442816CE8F00DEB4CE /* CollectionsViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionsViewController+TableView.swift"; sourceTree = "<group>"; };
 		F0C0637D2815CA200012D745 /* AlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 			children = (
 				016849C62812A49300436B3C /* happierReminders.xcdatamodeld */,
 				016849F12812A51600436B3C /* DataManager.swift */,
-				F080999328259F4E00902DFC /* NotificationArrayTransformer.swift */,
+				F080999328259F4E00902DFC /* CollecionArrayTransformers.swift */,
 				F08099952826341700902DFC /* NotificationController.swift */,
 			);
 			path = Model;
@@ -332,7 +332,7 @@
 				F08099962826341700902DFC /* NotificationController.swift in Sources */,
 				F080C4452816CE8F00DEB4CE /* CollectionsViewController+TableView.swift in Sources */,
 				016849C22812A49300436B3C /* CollectionsViewController.swift in Sources */,
-				F080999428259F4E00902DFC /* NotificationArrayTransformer.swift in Sources */,
+				F080999428259F4E00902DFC /* CollecionArrayTransformers.swift in Sources */,
 				F0C1E9172824569600DF8B63 /* ManageViewController.swift in Sources */,
 				016849F528154C0100436B3C /* CollectionTableViewCell.swift in Sources */,
 				016849F22812A51600436B3C /* DataManager.swift in Sources */,

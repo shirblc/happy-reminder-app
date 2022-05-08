@@ -18,7 +18,8 @@ class DataManager {
     
     // init
     init() {
-        NotificationArrayTransformer.register()
+        NotificationDaysArrayTransformer.register()
+        ScheduledNotificationArrayTransformer.register()
     }
     
     // MARK: Setup methods
