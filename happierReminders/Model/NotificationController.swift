@@ -80,17 +80,17 @@ class NotificationController {
     
     // scheduleNotifications
     // Schedules notifications based on the user's settings
-    func scheduleNotifications(notificationsData: UserNotificationData, permissionDeniedHandler: @escaping () -> Void, errorHandler: @escaping (Error) -> Void) async -> [String] {
+    func scheduleNotifications(notificationsData: UserNotificationData, errorHandler: @escaping (String) -> Void) async -> [String] {
         do {
             let authorisedNotifications = try await getNotificationsAuthorisationStatus()
             
             // make sure we have permission to send notifications
             guard authorisedNotifications else {
-                permissionDeniedHandler()
+                errorHandler("Notifications permissions denied. In order to receive notifications, allow notifications in your device's settings.")
                 return []
             }
         } catch {
-            errorHandler(error)
+            errorHandler(error.localizedDescription)
         }
         
         let notificationRequests = buildNotificationRequest(daysOfWeek: notificationsData.daysOfWeek, time: notificationsData.time, quoteText: notificationsData.quoteType, quoteType: notificationsData.quoteText)
@@ -106,7 +106,7 @@ class NotificationController {
                     scheduledNotificationIdentifiers[notificationsData.collectionID] = [request.identifier]
                 }
             } catch {
-                errorHandler(error)
+                errorHandler(error.localizedDescription)
             }
         }
         
