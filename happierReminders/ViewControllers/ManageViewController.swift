@@ -12,7 +12,7 @@ class ManageViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var sendNotificationsSwitch: UISwitch!
     @IBOutlet weak var timeSelectionPicker: UIDatePicker!
-    @IBOutlet var dayCheckboxes: [Checkbox]!
+    @IBOutlet weak var daysSelect: Select!
     @IBOutlet weak var saveButton: UIButton!
     
     // MARK: Lifecycle
@@ -38,18 +38,13 @@ class ManageViewController: UIViewController {
             timeSelectionPicker.date = date.date ?? Date()
         }
         
-        for checkbox in dayCheckboxes {
-            let notificationDays: [Int] = ((tabBarController as? CollectionTabBarViewController)!.collection.notificationDays ?? []) as! [Int]
-            checkbox.isSelected = notificationDays.contains(checkbox.tag) ? true : false
-        }
+        daysSelect.selectedDays = ((tabBarController as? CollectionTabBarViewController)!.collection.notificationDays ?? []) as! [Int]
     }
     
     // toggleNotificationUI
     // Disables/enables the notification-related UI controls depending on whether sendNotifications is true or false
     @objc func toggleNotificationUI() {
-        for checkbox in dayCheckboxes {
-            checkbox.isEnabled = sendNotificationsSwitch.isOn ? true : false
-        }
+        daysSelect.isEnabled = sendNotificationsSwitch.isOn ? true : false
         timeSelectionPicker.isEnabled = sendNotificationsSwitch.isOn ? true : false
     }
     
@@ -87,13 +82,7 @@ class ManageViewController: UIViewController {
         let newName = nameTextField.text
         let sendNotifications = sendNotificationsSwitch.isOn
         let notificationTime = timeSelectionPicker.date
-        var selectedDays: [Int] = []
-        
-        for checkbox in dayCheckboxes {
-            if(checkbox.isSelected) {
-                selectedDays.append(checkbox.tag)
-            }
-        }
+        let selectedDays: [Int] = daysSelect.selectedDays
         
         dataManager?.backgroundContext.perform {
             let collection = dataManager?.backgroundContext.object(with: collectionID) as! Collection
