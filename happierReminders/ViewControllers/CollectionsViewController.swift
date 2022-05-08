@@ -83,7 +83,7 @@ class CollectionsViewController: UIViewController, NSFetchedResultsControllerDel
     // Shows an error alert
     func showErrorAlert(error: Error, retryHandler: (() -> Void)?) {
         DispatchQueue.main.async {
-            let errorAlert = AlertFactory.createErrorAlert(error: error, dismissHandler: { _ in
+            let errorAlert = AlertFactory.createErrorAlert(error: error.localizedDescription, dismissHandler: { _ in
                 AlertFactory.activeAlert = nil
                 self.dismiss(animated: true)
             }, retryHandler: retryHandler)

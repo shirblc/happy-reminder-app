@@ -89,7 +89,7 @@ class AddQuoteViewController: UIViewController, UIPickerViewDataSource, UIPicker
     // Shows an error alert
     func showErrorAlert(error: Error) {
         DispatchQueue.main.async {
-            let alert = AlertFactory.createErrorAlert(error: error, dismissHandler: { _ in
+            let alert = AlertFactory.createErrorAlert(error: error.localizedDescription, dismissHandler: { _ in
                 self.dismiss(animated: true)
                 AlertFactory.activeAlert = nil
                 self.quoteSaved = false

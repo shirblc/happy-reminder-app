@@ -13,8 +13,8 @@ class AlertFactory {
     
     // createErrorAlert
     // Creates an error alert
-    static func createErrorAlert(error: Error, dismissHandler: @escaping (UIAlertAction) -> Void, retryHandler: (() -> Void)?) -> UIAlertController {
-        let errorAlert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+    static func createErrorAlert(error: String, dismissHandler: @escaping (UIAlertAction) -> Void, retryHandler: (() -> Void)?) -> UIAlertController {
+        let errorAlert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
         errorAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: dismissHandler))
         
         if let retryHandler = retryHandler {
