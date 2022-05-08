@@ -122,6 +122,7 @@ class CollectionsViewController: UIViewController, NSFetchedResultsControllerDel
             let collection = Collection(context: self.dataManager.viewContext)
             collection.name = title
             collection.sendNotifications = false
+            collection.uuid = UUID()
             
             self.dataManager.saveContext(useViewContext: true) { error in
                 self.showErrorAlert(error: error) {
