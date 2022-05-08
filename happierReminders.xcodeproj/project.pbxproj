@@ -20,6 +20,8 @@
 		016849F22812A51600436B3C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016849F12812A51600436B3C /* DataManager.swift */; };
 		016849F528154C0100436B3C /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016849F428154C0000436B3C /* CollectionTableViewCell.swift */; };
 		F04976472827CCCC00DCC4BA /* Select.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04976462827CCCC00DCC4BA /* Select.swift */; };
+		F049764A2827ED9F00DCC4BA /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = F04976492827ED9F00DCC4BA /* Collections */; };
+		F049764C2827ED9F00DCC4BA /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = F049764B2827ED9F00DCC4BA /* OrderedCollections */; };
 		F08099922825903000902DFC /* CollectionTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08099912825903000902DFC /* CollectionTabBarViewController.swift */; };
 		F080999428259F4E00902DFC /* NotificationArrayTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F080999328259F4E00902DFC /* NotificationArrayTransformer.swift */; };
 		F08099962826341700902DFC /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08099952826341700902DFC /* NotificationController.swift */; };
@@ -80,6 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F049764C2827ED9F00DCC4BA /* OrderedCollections in Frameworks */,
+				F049764A2827ED9F00DCC4BA /* Collections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +207,10 @@
 			dependencies = (
 			);
 			name = happierReminders;
+			packageProductDependencies = (
+				F04976492827ED9F00DCC4BA /* Collections */,
+				F049764B2827ED9F00DCC4BA /* OrderedCollections */,
+			);
 			productName = happierReminders;
 			productReference = 016849BA2812A49300436B3C /* happierReminders.app */;
 			productType = "com.apple.product-type.application";
@@ -275,6 +283,9 @@
 				Base,
 			);
 			mainGroup = 016849B12812A49300436B3C;
+			packageReferences = (
+				F04976482827ED9F00DCC4BA /* XCRemoteSwiftPackageReference "swift-collections" */,
+			);
 			productRefGroup = 016849BB2812A49300436B3C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -696,6 +707,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F04976482827ED9F00DCC4BA /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F04976492827ED9F00DCC4BA /* Collections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F04976482827ED9F00DCC4BA /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = Collections;
+		};
+		F049764B2827ED9F00DCC4BA /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F04976482827ED9F00DCC4BA /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		016849C62812A49300436B3C /* happierReminders.xcdatamodeld */ = {

@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import Collections
 
 class Select: UIButton {
     // MARK: Variables & Constants
     private var selectedDaysInternal: [Int] = []
-    let dayOptions = ["Monday": 0, "Tuesday": 1, "Wednesday": 2, "Thursday": 3, "Friday": 4, "Saturday": 5, "Sunday": 6]
+    let dayOptions: OrderedDictionary = ["Monday": 0, "Tuesday": 1, "Wednesday": 2, "Thursday": 3, "Friday": 4, "Saturday": 5, "Sunday": 6]
     var selectedDays: [Int] {
         get {
             return selectedDaysInternal
