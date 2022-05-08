@@ -4,7 +4,7 @@
         <attribute name="name" attributeType="String" defaultValueString="Collection" allowsCloudEncryption="YES"/>
         <attribute name="notificationDays" optional="YES" attributeType="Transformable" valueTransformerName="NotificationDaysArrayTransformer" allowsCloudEncryption="YES" customClassName="NSArray"/>
         <attribute name="notificationTime" optional="YES" attributeType="String" valueTransformerName="NotificationTimeTransformer" allowsCloudEncryption="YES" customClassName="NSDictionary"/>
-        <attribute name="scheduledNotifications" attributeType="Transformable" valueTransformerName="ScheduledNotificationArrayTransformer" allowsCloudEncryption="YES" customClassName="NSArray"/>
+        <attribute name="scheduledNotifications" optional="YES" attributeType="Transformable" valueTransformerName="ScheduledNotificationArrayTransformer" allowsCloudEncryption="YES" customClassName="NSArray"/>
         <attribute name="sendNotifications" attributeType="Boolean" defaultValueString="NO" allowsCloudEncryption="YES" usesScalarValueType="YES"/>
         <attribute name="uuid" attributeType="UUID" allowsCloudEncryption="YES" usesScalarValueType="NO"/>
         <relationship name="quotes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Quote" inverseName="collection" inverseEntity="Quote"/>
