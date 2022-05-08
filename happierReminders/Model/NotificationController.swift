@@ -19,36 +19,32 @@ class NotificationController {
     
     // getNotificationsAuthorisationStatus
     // Checks whether the user authorised notifications
-    func getNotificationsAuthorisationStatus(errorHandler: @escaping (Error) -> Void, permissionDeniedHandler: @escaping () -> Void) {
-        notificationCentre.getNotificationSettings { settings in
-            guard settings.authorizationStatus == .authorized else {
-                if(settings.authorizationStatus == .denied) {
-                    self.authorisedNotifications = false
-                } else if(settings.authorizationStatus == .notDetermined) {
-                    self.requestAuthorisation(errorHandler: errorHandler, permissionDeniedHandler: permissionDeniedHandler)
-                }
-                
-                return
+    private func getNotificationsAuthorisationStatus(errorHandler: @escaping (Error) -> Void) async -> Bool {
+        let settings = await notificationCentre.notificationSettings()
+        
+        if(settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional) {
+            return true
+        } else if(settings.authorizationStatus == .notDetermined) {
+            do {
+                let granted = try await self.requestAuthorisation()
+                return granted
+            } catch {
+                errorHandler(error)
+                return false
             }
-            
-            self.authorisedNotifications = true
+        } else {
+            return false
         }
     }
     
     // requestAuthorisation
     // Request notifications authorisation
-    private func requestAuthorisation(errorHandler: @escaping (Error) -> Void, permissionDeniedHandler: @escaping () -> Void) {
-        notificationCentre.requestAuthorization(options: [.alert]) { granted, error in
-            guard error == nil else {
-                errorHandler(error!)
-                return
-            }
-            
-            if(granted) {
-                self.scheduleNotifications()
-            } else {
-                permissionDeniedHandler()
-            }
+    private func requestAuthorisation() async throws -> Bool {
+        do {
+            let granted = try await notificationCentre.requestAuthorization(options: [.alert])
+            return granted
+        } catch {
+            throw error
         }
     }
     
