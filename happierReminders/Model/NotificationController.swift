@@ -81,7 +81,7 @@ class NotificationController {
     
     // scheduleNotifications
     // Schedules notifications based on the user's settings
-    func scheduleNotifications(notificationsData: UserNotificationData, permissionDeniedHandler: @escaping () -> Void, errorHandler: @escaping (Error) -> Void) {
+    func scheduleNotifications(notificationsData: UserNotificationData, permissionDeniedHandler: @escaping () -> Void, errorHandler: @escaping (Error) -> Void, successHandler: @escaping ([String]) -> Void) {
         Task(priority: .medium) {
             let authorisedNotifications = await getNotificationsAuthorisationStatus(errorHandler: errorHandler)
             
@@ -107,6 +107,8 @@ class NotificationController {
                     errorHandler(error)
                 }
             }
+            
+            successHandler(scheduledNotificationIdentifiers[notificationsData.collectionID] ?? [])
         }
     }
 }
