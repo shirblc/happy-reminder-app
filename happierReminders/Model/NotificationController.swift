@@ -52,6 +52,29 @@ class NotificationController {
         }
     }
     
+    // buildNotificationRequest
+    // Builds the UNNotificationRequest to schedule
+    func buildNotificationRequest(daysOfWeek: [Int], time: String, quoteText: String, quoteType: String) -> [UNNotificationRequest] {
+        // Set the notification's content
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = "\(quoteType) Reminder:"
+        // TODO: Replace this with randomly generated text
+        notificationContent.body = quoteText
+        
+        var notificationRequests: [UNNotificationRequest] = []
+        
+        // Set the notification's trigger, one per day the user selected
+        for dayOfWeek in daysOfWeek {
+            let scheduleDateComponents = DateComponents(calendar: .current, timeZone: .current, era: nil, year: nil, month: nil, day: nil, hour: Int(time.split(separator: ":")[0]), minute: Int(time.split(separator: ":")[1]), second: 00, nanosecond: 0, weekday: dayOfWeek, weekdayOrdinal: nil, quarter: nil, weekOfMonth: nil, weekOfYear: nil, yearForWeekOfYear: nil)
+            let notificationTrigger = UNCalendarNotificationTrigger(dateMatching: scheduleDateComponents, repeats: true)
+            let identifier = UUID().uuidString
+            
+            notificationRequests.append(UNNotificationRequest(identifier: identifier, content: notificationContent, trigger: notificationTrigger))
+        }
+        
+        return notificationRequests
+    }
+    
     // scheduleNotifications
     // Schedules notifications based on the user's settings
     func scheduleNotifications() {
