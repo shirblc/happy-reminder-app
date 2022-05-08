@@ -27,7 +27,7 @@ class NotificationController {
     
     // getNotificationsAuthorisationStatus
     // Checks whether the user authorised notifications
-    private func getNotificationsAuthorisationStatus(errorHandler: @escaping (Error) -> Void) async -> Bool {
+    private func getNotificationsAuthorisationStatus() async throws -> Bool {
         let settings = await notificationCentre.notificationSettings()
         
         if(settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional) {
@@ -37,8 +37,7 @@ class NotificationController {
                 let granted = try await self.requestAuthorisation()
                 return granted
             } catch {
-                errorHandler(error)
-                return false
+                throw error
             }
         } else {
             return false
@@ -82,12 +81,16 @@ class NotificationController {
     // scheduleNotifications
     // Schedules notifications based on the user's settings
     func scheduleNotifications(notificationsData: UserNotificationData, permissionDeniedHandler: @escaping () -> Void, errorHandler: @escaping (Error) -> Void) async -> [String] {
-        let authorisedNotifications = await getNotificationsAuthorisationStatus(errorHandler: errorHandler)
-        
-        // make sure we have permission to send notifications
-        guard authorisedNotifications else {
-            permissionDeniedHandler()
-            return []
+        do {
+            let authorisedNotifications = try await getNotificationsAuthorisationStatus()
+            
+            // make sure we have permission to send notifications
+            guard authorisedNotifications else {
+                permissionDeniedHandler()
+                return []
+            }
+        } catch {
+            errorHandler(error)
         }
         
         let notificationRequests = buildNotificationRequest(daysOfWeek: notificationsData.daysOfWeek, time: notificationsData.time, quoteText: notificationsData.quoteType, quoteType: notificationsData.quoteText)
