@@ -109,7 +109,7 @@ class ManageViewController: UIViewController {
                 }
             } else {
                 // if the user turned notifications off, delete any pending requests
-                if collection.sendNotifications, let scheduledNotifications = collection.scheduledNotifications {
+                if let scheduledNotifications = collection.scheduledNotifications {
                     NotificationController.shared.deleteScheduledNotifications(existingNotifications: scheduledNotifications as! [String])
                 }
             }
