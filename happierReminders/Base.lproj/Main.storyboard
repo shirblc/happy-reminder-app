@@ -248,11 +248,98 @@
                     <connections>
                         <outlet property="tableView" destination="S48-Hh-Cw0" id="nNL-dd-Z7S"/>
                         <segue destination="Mkq-6I-hl3" kind="show" identifier="addQuoteSegue" id="8xr-xr-AMA"/>
+                        <segue destination="VZ5-Qv-RiK" kind="show" identifier="fetchQuoteFromNetworkSegue" id="zLI-1S-vEd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r6Y-R2-Btg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2689.8550724637685" y="-220.3125"/>
+        </scene>
+        <!--Fetch Quote-->
+        <scene sceneID="Jui-F9-MA5">
+            <objects>
+                <viewController id="VZ5-Qv-RiK" customClass="FetchQuoteViewController" customModule="happierReminders" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="27d-Hd-2QK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zZ2-tD-pKh">
+                                <rect key="frame" x="15" y="96" width="384" height="572"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="uMy-AY-bAh">
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quote Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Is-uB-tlP">
+                                                <rect key="frame" x="0.0" y="0.0" width="192" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xlx-e3-iCz" customClass="Select" customModule="happierReminders" customModuleProvider="target">
+                                                <rect key="frame" x="192" y="0.0" width="192" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="chevron.down" catalog="system" title="Types" titleAlignment="center"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="ZCA-gq-rSv">
+                                        <rect key="frame" x="0.0" y="41" width="384" height="490"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EpS-6i-jX2">
+                                                <rect key="frame" x="48" y="0.0" width="288" height="419"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Source" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="STz-v4-H2j">
+                                                <rect key="frame" x="58" y="440" width="268" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JPV-HN-5py">
+                                        <rect key="frame" x="0.0" y="541" width="384" height="31"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvi-AG-5e6">
+                                                <rect key="frame" x="0.0" y="0.0" width="192" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Try Another"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gtk-Ru-avw">
+                                                <rect key="frame" x="192" y="0.0" width="192" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Add to My Quotes"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="swO-Am-S61"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="zZ2-tD-pKh" secondAttribute="trailing" constant="15" id="Pca-e4-lUJ"/>
+                            <constraint firstItem="zZ2-tD-pKh" firstAttribute="top" secondItem="swO-Am-S61" secondAttribute="top" constant="8" id="XYw-Z4-t5q"/>
+                            <constraint firstItem="zZ2-tD-pKh" firstAttribute="leading" secondItem="swO-Am-S61" secondAttribute="leading" constant="15" id="aFj-eN-vC5"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Fetch Quote" id="pDe-Rc-p18">
+                        <barButtonItem key="backBarButtonItem" title="Cancel" id="KAp-rB-zor"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="quoteSourceView" destination="STz-v4-H2j" id="tJ5-bF-Vmi"/>
+                        <outlet property="quoteTextView" destination="EpS-6i-jX2" id="pyB-bf-6lK"/>
+                        <outlet property="typeSelect" destination="xlx-e3-iCz" id="byT-Gy-9g1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B5B-J6-Msc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3660.8695652173915" y="77.678571428571431"/>
         </scene>
         <!--New Quote-->
         <scene sceneID="6P0-D1-WOs">
@@ -331,7 +418,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="asQ-7f-qSN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3675" y="-220"/>
+            <point key="canvasLocation" x="3693" y="-613"/>
         </scene>
         <!--Collection Tab Bar View Controller-->
         <scene sceneID="FWv-kH-nkU">
@@ -376,6 +463,9 @@
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="quote.bubble" catalog="system" width="128" height="110"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
