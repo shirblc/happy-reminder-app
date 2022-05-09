@@ -79,7 +79,7 @@ class NotificationController {
     
     // scheduleNotifications
     // Schedules notifications based on the user's settings
-    func scheduleNotifications(notificationsData: UserNotificationData, errorHandler: @escaping (String) -> Void) async -> [String] {
+    func scheduleNotifications(notificationsData: UserNotificationData, errorHandler: @escaping (String) -> Void, existingNotifications: [String]?) async -> [String] {
         do {
             let authorisedNotifications = try await getNotificationsAuthorisationStatus()
             
@@ -95,6 +95,11 @@ class NotificationController {
         var scheduledNotifications: [String] = []
         let notificationRequests = buildNotificationRequest(daysOfWeek: notificationsData.daysOfWeek, time: notificationsData.time, quoteText: notificationsData.quoteType, quoteType: notificationsData.quoteText)
         
+        // if there are existing scheduled notifications in Core Data, delete them
+        if let existingNotifications = existingNotifications {
+            deleteScheduledNotifications(existingNotifications: existingNotifications)
+        }
+        
         // add the requests and keep track of sent notification IDs
         for request in notificationRequests {
             do {
@@ -105,6 +110,12 @@ class NotificationController {
             }
         }
         
-        return scheduledNotificationIdentifiers[notificationsData.collectionID] ?? []
+        return scheduledNotifications
+    }
+    
+    // deleteScheduledNotifications
+    // Deletes the given notification IDs from scheduled notifications 
+    func deleteScheduledNotifications(existingNotifications: [String]) {
+        notificationCentre.removePendingNotificationRequests(withIdentifiers: existingNotifications)
     }
 }
