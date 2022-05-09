@@ -98,6 +98,11 @@ class ManageViewController: UIViewController {
                 if(notificationIDs.count > 0) {
                     sendNotifications = false
                 }
+            } else {
+                // if the user turned notifications off, delete any pending requests
+                if collection.sendNotifications, let scheduledNotifications = collection.scheduledNotifications {
+                    NotificationController.shared.deleteScheduledNotifications(existingNotifications: scheduledNotifications as! [String])
+                }
             }
             
             // Then save all the data
