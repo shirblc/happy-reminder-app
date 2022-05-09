@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddQuoteViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class AddQuoteViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
     // MARK: Variables & Constants
     var dataManager: DataManager!
     var collection: Collection!
@@ -22,6 +22,8 @@ class AddQuoteViewController: UIViewController, UIPickerViewDataSource, UIPicker
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        quoteTextTextField.delegate = self
+        quoteSourceTextField.delegate = self
         quoteTypePicker.dataSource = self
         quoteTypePicker.delegate = self
         addButton.isEnabled = false
@@ -44,6 +46,12 @@ class AddQuoteViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return datePickerOptions[row]
+    }
+    
+    // MARK: UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     // MARK: UI/Controls Handling
