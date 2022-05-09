@@ -13,9 +13,20 @@ struct QuoteData {
     let type: String
 }
 
-enum HTTPError: Error, LocalizedError {
+enum HTTPError: Error {
     case ClientError(errorText: String)
     case ServerError(errorText: String)
+}
+
+extension HTTPError: LocalizedError {
+    var errorDescription: String? {
+        switch(self) {
+        case let .ClientError(errorText):
+            return NSLocalizedString(errorText, comment: "")
+        case let .ServerError(errorText):
+            return NSLocalizedString(errorText, comment: "")
+        }
+    }
 }
 
 class APIClient {
@@ -87,8 +98,7 @@ class APIClient {
     func getErrorString(type: apis, responseData: Data) -> String {
         switch(type) {
         case .Affirmation:
-            let error = String(data: responseData, encoding: .utf8)
-            return "An error occurred while fetching the affirmation: \(String(describing: error))"
+            return "An error occurred while fetching the affirmation"
         case .Insperational:
             let responseJSON = try? JSONSerialization.jsonObject(with: responseData) as? [String: Any]
             let errorMsg = responseJSON?["statusMessage"] as? String ?? "An error occurred while fetching the quote"
