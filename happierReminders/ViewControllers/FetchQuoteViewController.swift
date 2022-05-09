@@ -8,6 +8,8 @@
 import UIKit
 
 class FetchQuoteViewController: UIViewController {
+    var dataManager: DataManager!
+    var collection: Collection!
     @IBOutlet weak var typeSelect: Select!
     @IBOutlet weak var quoteTextView: UITextView!
     @IBOutlet weak var quoteSourceView: UITextView!

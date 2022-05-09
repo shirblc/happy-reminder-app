@@ -50,6 +50,10 @@ class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate
             if let sender = sender as? Quote {
                 addQuoteVC.quote = sender
             }
+        } else if(segue.identifier == "fetchQuoteFromNetworkSegue") {
+            let fetchQuoteVC = segue.destination as! FetchQuoteViewController
+            fetchQuoteVC.dataManager = self.dataManager
+            fetchQuoteVC.collection = self.collection
         }
     }
     
@@ -170,7 +174,9 @@ class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate
             alert.addAction(UIAlertAction(title: "Write your own", style: .default) { _ in
                 self.performSegue(withIdentifier: "addQuoteSegue", sender: nil)
             })
-            // TODO: Add the option to fetch from the internet
+            alert.addAction(UIAlertAction(title: "Fetch from the Internet", style: .default, handler: { _ in
+                self.performSegue(withIdentifier: "fetchQuoteFromNetworkSegue", sender: nil)
+            }))
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
                 self.dismiss(animated: true)
             }))
