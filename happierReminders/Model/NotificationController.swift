@@ -17,7 +17,6 @@ struct UserNotificationData {
 }
 
 class NotificationController {
-    var scheduledNotificationIdentifiers: [String: [String]] = [:]
     let notificationCentre = UNUserNotificationCenter.current()
     static let shared = NotificationController()
     
@@ -93,18 +92,14 @@ class NotificationController {
             errorHandler(error.localizedDescription)
         }
         
+        var scheduledNotifications: [String] = []
         let notificationRequests = buildNotificationRequest(daysOfWeek: notificationsData.daysOfWeek, time: notificationsData.time, quoteText: notificationsData.quoteType, quoteType: notificationsData.quoteText)
         
         // add the requests and keep track of sent notification IDs
         for request in notificationRequests {
             do {
                 try await notificationCentre.add(request)
-                
-                if(scheduledNotificationIdentifiers.keys.contains(notificationsData.collectionID)) {
-                    scheduledNotificationIdentifiers[notificationsData.collectionID]?.append(request.identifier)
-                } else {
-                    scheduledNotificationIdentifiers[notificationsData.collectionID] = [request.identifier]
-                }
+                scheduledNotifications.append(request.identifier)
             } catch {
                 errorHandler(error.localizedDescription)
             }
