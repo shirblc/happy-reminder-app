@@ -14,7 +14,7 @@ extension Collection {
         let quoteList = self.quotes?.allObjects as? [Quote]
         
         if let quoteList = quoteList, quoteList.count > 0 {
-            let randomQuoteIndex = Int.random(in: 0...quoteList.count)
+            let randomQuoteIndex = Int.random(in: 0...quoteList.count-1)
             return quoteList[randomQuoteIndex]
         } else {
             return nil
