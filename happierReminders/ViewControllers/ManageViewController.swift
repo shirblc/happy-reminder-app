@@ -9,6 +9,8 @@ import UIKit
 
 class ManageViewController: UIViewController {
     // MARK: Variables & Constants
+    var collection: Collection!
+    var dataManager: DataManager!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var sendNotificationsSwitch: UISwitch!
     @IBOutlet weak var timeSelectionPicker: UIDatePicker!
@@ -18,6 +20,8 @@ class ManageViewController: UIViewController {
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        dataManager = (tabBarController as? CollectionTabBarViewController)?.dataManager
+        collection = (tabBarController as? CollectionTabBarViewController)?.collection
         tabBarController?.navigationItem.rightBarButtonItems = []
         setupControlsValues()
         toggleNotificationUI()
@@ -29,16 +33,16 @@ class ManageViewController: UIViewController {
     // setupControlsValues
     // Sets up the controls to reflect the Collection's values
     func setupControlsValues() {
-        nameTextField.text = (tabBarController as? CollectionTabBarViewController)!.collection.name
-        sendNotificationsSwitch.isOn = (tabBarController as? CollectionTabBarViewController)!.collection.sendNotifications
-        let notificationTime = (tabBarController as? CollectionTabBarViewController)!.collection.notificationTime?.split(separator: ":")
+        nameTextField.text = collection.name
+        sendNotificationsSwitch.isOn = collection.sendNotifications
+        let notificationTime = collection.notificationTime?.split(separator: ":")
         
         if let hour = notificationTime?[0], let minutes = notificationTime?[1] {
             let date = DateComponents(calendar: .current, timeZone: nil, era: nil, year: nil, month: nil, day: nil, hour: Int(hour), minute: Int(minutes), second: 0, nanosecond: 0, weekday: nil, weekdayOrdinal: nil, quarter: nil, weekOfMonth: nil, weekOfYear: nil, yearForWeekOfYear: nil)
             timeSelectionPicker.date = date.date ?? Date()
         }
         
-        daysSelect.selectedDays = ((tabBarController as? CollectionTabBarViewController)!.collection.notificationDays ?? []) as! [Int]
+        daysSelect.selectedDays = (collection.notificationDays ?? []) as! [Int]
     }
     
     // toggleNotificationUI
@@ -77,33 +81,71 @@ class ManageViewController: UIViewController {
     // saveSettings
     // Saves the settings
     @IBAction func saveSettings(_ sender: UIButton) {
-        let dataManager = (tabBarController as? CollectionTabBarViewController)!.dataManager
-        let collectionID = (self.tabBarController as? CollectionTabBarViewController)!.collection.objectID
-        let newName = nameTextField.text
-        let sendNotifications = sendNotificationsSwitch.isOn
-        let notificationTime = timeSelectionPicker.date
-        let selectedDays: [Int] = daysSelect.selectedDays
-        
-        dataManager?.backgroundContext.perform {
-            let collection = dataManager?.backgroundContext.object(with: collectionID) as! Collection
-            collection.name = newName
-            collection.sendNotifications = sendNotifications
+        Task {
+            let newName = nameTextField.text
+            var sendNotifications = sendNotificationsSwitch.isOn
+            var notificationTimeStr: String = ""
+            var selectedDays: [Int] = []
+            var notificationIDs: [String] = []
             
+            // If sendNotifications is true, set up the notifications
             if(sendNotifications) {
-                collection.notificationTime = self.translateDateTimeToString(date: notificationTime)
-                collection.notificationDays = selectedDays as NSArray
+                let notificationTime = timeSelectionPicker.date
+                notificationTimeStr = translateDateTimeToString(date: notificationTime)
+                selectedDays = daysSelect.selectedDays
+                notificationIDs = await scheduleNotifications(selectedDays: selectedDays, time: notificationTimeStr, collectionID: collection.uuid!.uuidString, existingNotifications: collection.scheduledNotifications as? [String])
+                
+                if(notificationIDs.count > 0) {
+                    sendNotifications = false
+                }
             }
             
-            dataManager?.saveContext(useViewContext: false, errorCallback: { error in
-                DispatchQueue.main.async {
-                    let alert = AlertFactory.createErrorAlert(error: error, dismissHandler: { _ in
-                        self.dismiss(animated: true)
-                        AlertFactory.activeAlert = nil
-                    }, retryHandler: nil)
-                    AlertFactory.activeAlert = alert
-                    self.present(alert, animated: true)
-                }
-            })
+            // Then save all the data
+            await dataManager.backgroundContext.perform {
+                let bgContextCollection = self.dataManager?.backgroundContext.object(with: self.collection!.objectID) as! Collection
+                bgContextCollection.name = newName
+                bgContextCollection.sendNotifications = sendNotifications
+                bgContextCollection.notificationTime = notificationTimeStr
+                bgContextCollection.notificationDays = selectedDays as NSArray
+                bgContextCollection.scheduledNotifications = notificationIDs as NSArray
+                
+                self.dataManager.saveContext(useViewContext: false, errorCallback: { error in
+                    self.showErrorAlert(error: error.localizedDescription)
+                })
+            }
+        }
+    }
+    
+    // scheduleNotifications
+    // Build the notification data and trigger sending notifications
+    func scheduleNotifications(selectedDays: [Int], time: String, collectionID: String, existingNotifications: [String]?) async -> [String] {
+        let quote = collection.getRandomQuote()
+        
+        // if there's a quote, try to schedule it
+        if let quote = quote {
+            let notificationData = UserNotificationData(daysOfWeek: selectedDays, time: time, quoteType: quote.type!, quoteText: quote.text!, collectionID: collectionID)
+            let notificationIDs = await NotificationController.shared.scheduleNotifications(notificationsData: notificationData, errorHandler: { errorStr in
+                self.showErrorAlert(error: errorStr)
+            }, existingNotifications: existingNotifications)
+            
+            return notificationIDs
+        // otherwise alert the user we can't schedule notifications, but save the preferences anyway
+        } else {
+            showErrorAlert(error: "Warning: Can't schedule notifications without quotes. Your preferences will be saved, but no notifications will be sent until quotes are added.")
+            return []
+        }
+    }
+    
+    // showErrorAlert
+    // Shows an error alert
+    func showErrorAlert(error: String) {
+        DispatchQueue.main.async {
+            let alert = AlertFactory.createErrorAlert(error: error, dismissHandler: { _ in
+                self.dismiss(animated: true)
+                AlertFactory.activeAlert = nil
+            }, retryHandler: nil)
+            AlertFactory.activeAlert = alert
+            self.present(alert, animated: true)
         }
     }
 }
