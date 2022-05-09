@@ -29,6 +29,10 @@ class CollectionsViewController: UIViewController, NSFetchedResultsControllerDel
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setupFetchedResultsController()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         if let indexPathsForVisibleRows = tableView.indexPathsForVisibleRows {
             self.tableView.reloadRows(at: indexPathsForVisibleRows, with: .automatic)
         }
