@@ -23,10 +23,19 @@ class ManageViewController: UIViewController {
         dataManager = (tabBarController as? CollectionTabBarViewController)?.dataManager
         collection = (tabBarController as? CollectionTabBarViewController)?.collection
         tabBarController?.navigationItem.rightBarButtonItems = []
+        sendNotificationsSwitch.addTarget(self, action: #selector(toggleNotificationUI), for: .valueChanged)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setupControlsValues()
         toggleNotificationUI()
-        sendNotificationsSwitch.addTarget(self, action: #selector(toggleNotificationUI), for: .valueChanged)
         NotificationCenter.default.addObserver(self, selector: #selector(toggleSaveButton(textFieldNotification:)), name: UITextField.textDidChangeNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: nil)
     }
     
     // MARK: UI/Controls Handling
