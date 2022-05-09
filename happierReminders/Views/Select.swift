@@ -11,7 +11,7 @@ import Collections
 class Select: UIButton {
     // MARK: Variables & Constants
     private var selectedDaysInternal: [Int] = []
-    let dayOptions: OrderedDictionary = ["Monday": 0, "Tuesday": 1, "Wednesday": 2, "Thursday": 3, "Friday": 4, "Saturday": 5, "Sunday": 6]
+    private var selectOptions: OrderedDictionary<String, Int> = [:]
     var selectedDays: [Int] {
         get {
             return selectedDaysInternal
@@ -21,9 +21,18 @@ class Select: UIButton {
             setUpMenu()
         }
     }
+    var options: OrderedDictionary<String, Int> {
+        get {
+            return selectOptions
+        }
+        set(newOptions) {
+            selectOptions = newOptions
+            setUpMenu()
+        }
+    }
     var dayActions: [UIAction] {
         var actions: [UIAction] = []
-        for day in dayOptions {
+        for day in selectOptions {
             let imageName = selectedDays.contains(day.value) ? "checkmark.square.fill" : "square"
             let imageToUse = UIImage(systemName: imageName)
             let action = UIAction(title: day.key, image: imageToUse, identifier: nil, discoverabilityTitle: day.key, attributes: [], state: .off) { action in
