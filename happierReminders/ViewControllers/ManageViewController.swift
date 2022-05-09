@@ -37,8 +37,8 @@ class ManageViewController: UIViewController {
         sendNotificationsSwitch.isOn = collection.sendNotifications
         let notificationTime = collection.notificationTime?.split(separator: ":")
         
-        if let hour = notificationTime?[0], let minutes = notificationTime?[1] {
-            let date = DateComponents(calendar: .current, timeZone: nil, era: nil, year: nil, month: nil, day: nil, hour: Int(hour), minute: Int(minutes), second: 0, nanosecond: 0, weekday: nil, weekdayOrdinal: nil, quarter: nil, weekOfMonth: nil, weekOfYear: nil, yearForWeekOfYear: nil)
+        if let notificationTime = notificationTime, notificationTime.count > 0 {
+            let date = DateComponents(calendar: .current, timeZone: nil, era: nil, year: nil, month: nil, day: nil, hour: Int(notificationTime[0]), minute: Int(notificationTime[1]), second: 0, nanosecond: 0, weekday: nil, weekdayOrdinal: nil, quarter: nil, weekOfMonth: nil, weekOfYear: nil, yearForWeekOfYear: nil)
             timeSelectionPicker.date = date.date ?? Date()
         }
         
