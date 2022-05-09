@@ -32,6 +32,7 @@ class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setupFetchedResultsController()
+        self.setupTopToolbar()
         tableView.reloadData()
     }
     
