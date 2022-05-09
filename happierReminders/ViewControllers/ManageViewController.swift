@@ -133,15 +133,13 @@ class ManageViewController: UIViewController {
     // scheduleNotifications
     // Build the notification data and trigger sending notifications
     func scheduleNotifications(selectedDays: [Int], time: String, collectionID: String, existingNotifications: [String]?) async -> [String] {
-        let quote = collection.getRandomQuote()
-        
         // if there's a quote, try to schedule it
-        if let quote = quote {
-            let notificationData = UserNotificationData(daysOfWeek: selectedDays, time: time, quoteType: quote.type!, quoteText: quote.text!, collectionID: collectionID)
-            let notificationIDs = await NotificationController.shared.scheduleNotifications(notificationsData: notificationData, errorHandler: { errorStr in
-                self.showErrorAlert(error: errorStr)
-            }, existingNotifications: existingNotifications)
-            
+        let notificationData = UserNotificationData(daysOfWeek: selectedDays, time: time, collection: collection)
+        let notificationIDs = await NotificationController.shared.scheduleNotifications(notificationsData: notificationData, errorHandler: { errorStr in
+            self.showErrorAlert(error: errorStr)
+        }, existingNotifications: existingNotifications)
+        
+        if(notificationIDs.count > 0) {
             return notificationIDs
         // otherwise alert the user we can't schedule notifications, but save the preferences anyway
         } else {

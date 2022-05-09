@@ -11,9 +11,7 @@ import UserNotifications
 struct UserNotificationData {
     let daysOfWeek: [Int]
     let time: String
-    let quoteType: String
-    let quoteText: String
-    let collectionID: String
+    let collection: Collection
 }
 
 class NotificationController {
@@ -56,22 +54,25 @@ class NotificationController {
     
     // buildNotificationRequest
     // Builds the UNNotificationRequest to schedule
-    private func buildNotificationRequest(daysOfWeek: [Int], time: String, quoteText: String, quoteType: String) -> [UNNotificationRequest] {
-        // Set the notification's content
-        let notificationContent = UNMutableNotificationContent()
-        notificationContent.title = "\(quoteType) Reminder:"
-        // TODO: Replace this with randomly generated text
-        notificationContent.body = quoteText
-        
+    private func buildNotificationRequest(daysOfWeek: [Int], time: String, collection: Collection) -> [UNNotificationRequest] {
         var notificationRequests: [UNNotificationRequest] = []
         
-        // Set the notification's trigger, one per day the user selected
         for dayOfWeek in daysOfWeek {
-            let scheduleDateComponents = DateComponents(calendar: .current, timeZone: .current, era: nil, year: nil, month: nil, day: nil, hour: Int(time.split(separator: ":")[0]), minute: Int(time.split(separator: ":")[1]), second: 00, nanosecond: 0, weekday: dayOfWeek, weekdayOrdinal: nil, quarter: nil, weekOfMonth: nil, weekOfYear: nil, yearForWeekOfYear: nil)
-            let notificationTrigger = UNCalendarNotificationTrigger(dateMatching: scheduleDateComponents, repeats: true)
-            let identifier = UUID().uuidString
+            let quote = collection.getRandomQuote()
             
-            notificationRequests.append(UNNotificationRequest(identifier: identifier, content: notificationContent, trigger: notificationTrigger))
+            if let quote = quote {
+                // Set the notification's content
+                let notificationContent = UNMutableNotificationContent()
+                notificationContent.title = "\(String(describing: quote.type)) Reminder:"
+                notificationContent.body = (quote.text)!
+                
+                // Set the notification's trigger, one per day the user selected
+                let scheduleDateComponents = DateComponents(calendar: .current, timeZone: .current, era: nil, year: nil, month: nil, day: nil, hour: Int(time.split(separator: ":")[0]), minute: Int(time.split(separator: ":")[1]), second: 00, nanosecond: 0, weekday: dayOfWeek, weekdayOrdinal: nil, quarter: nil, weekOfMonth: nil, weekOfYear: nil, yearForWeekOfYear: nil)
+                let notificationTrigger = UNCalendarNotificationTrigger(dateMatching: scheduleDateComponents, repeats: true)
+                let identifier = UUID().uuidString
+                
+                notificationRequests.append(UNNotificationRequest(identifier: identifier, content: notificationContent, trigger: notificationTrigger))
+            }
         }
         
         return notificationRequests
@@ -93,7 +94,7 @@ class NotificationController {
         }
         
         var scheduledNotifications: [String] = []
-        let notificationRequests = buildNotificationRequest(daysOfWeek: notificationsData.daysOfWeek, time: notificationsData.time, quoteText: notificationsData.quoteType, quoteType: notificationsData.quoteText)
+        let notificationRequests = buildNotificationRequest(daysOfWeek: notificationsData.daysOfWeek, time: notificationsData.time, collection: notificationsData.collection)
         
         // if there are existing scheduled notifications in Core Data, delete them
         if let existingNotifications = existingNotifications {
