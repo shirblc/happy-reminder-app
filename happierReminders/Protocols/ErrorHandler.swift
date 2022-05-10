@@ -1,5 +1,5 @@
 //
-//  Errorable.swift
+//  ErrorHandler.swift
 //  happierReminders
 //
 //  Created by Shir Bar Lev on 10/05/2022.
