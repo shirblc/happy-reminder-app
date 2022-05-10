@@ -141,6 +141,7 @@
 		016849BC2812A49300436B3C /* happierReminders */ = {
 			isa = PBXGroup;
 			children = (
+				F049765B282B008500DCC4BA /* API Client */,
 				F0497657282AEAA300DCC4BA /* Protocols */,
 				016849F62815A5AA00436B3C /* ViewControllers */,
 				016849F328154BA400436B3C /* Views */,
@@ -180,8 +181,6 @@
 				F080999328259F4E00902DFC /* CollectionArrayTransformers.swift */,
 				F08099952826341700902DFC /* NotificationController.swift */,
 				F049764D2828F12600DCC4BA /* Collection+Extensions.swift */,
-				F04976512829447600DCC4BA /* APIClient.swift */,
-				F049765328297CA900DCC4BA /* MotivationalQuote.swift */,
 				F0497658282AEEA100DCC4BA /* Quote+Extensions.swift */,
 			);
 			path = Model;
@@ -217,6 +216,15 @@
 				F0497655282AE7FE00DCC4BA /* ErrorHandler.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		F049765B282B008500DCC4BA /* API Client */ = {
+			isa = PBXGroup;
+			children = (
+				F04976512829447600DCC4BA /* APIClient.swift */,
+				F049765328297CA900DCC4BA /* MotivationalQuote.swift */,
+			);
+			path = "API Client";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
