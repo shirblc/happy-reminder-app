@@ -26,7 +26,8 @@
 		F049765028291A3C00DCC4BA /* FetchQuoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F049764F28291A3C00DCC4BA /* FetchQuoteViewController.swift */; };
 		F04976522829447600DCC4BA /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04976512829447600DCC4BA /* APIClient.swift */; };
 		F049765428297CA900DCC4BA /* MotivationalQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = F049765328297CA900DCC4BA /* MotivationalQuote.swift */; };
-		F0497656282AE7FE00DCC4BA /* Errorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0497655282AE7FE00DCC4BA /* Errorable.swift */; };
+		F0497656282AE7FE00DCC4BA /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0497655282AE7FE00DCC4BA /* ErrorHandler.swift */; };
+		F0497659282AEEA100DCC4BA /* Quote+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0497658282AEEA100DCC4BA /* Quote+Extensions.swift */; };
 		F08099922825903000902DFC /* CollectionTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08099912825903000902DFC /* CollectionTabBarViewController.swift */; };
 		F080999428259F4E00902DFC /* CollecionArrayTransformers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F080999328259F4E00902DFC /* CollecionArrayTransformers.swift */; };
 		F08099962826341700902DFC /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08099952826341700902DFC /* NotificationController.swift */; };
@@ -76,7 +77,8 @@
 		F049764F28291A3C00DCC4BA /* FetchQuoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchQuoteViewController.swift; sourceTree = "<group>"; };
 		F04976512829447600DCC4BA /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		F049765328297CA900DCC4BA /* MotivationalQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivationalQuote.swift; sourceTree = "<group>"; };
-		F0497655282AE7FE00DCC4BA /* Errorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errorable.swift; sourceTree = "<group>"; };
+		F0497655282AE7FE00DCC4BA /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
+		F0497658282AEEA100DCC4BA /* Quote+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quote+Extensions.swift"; sourceTree = "<group>"; };
 		F08099912825903000902DFC /* CollectionTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTabBarViewController.swift; sourceTree = "<group>"; };
 		F080999328259F4E00902DFC /* CollecionArrayTransformers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollecionArrayTransformers.swift; sourceTree = "<group>"; };
 		F08099952826341700902DFC /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				F049764D2828F12600DCC4BA /* Collection+Extensions.swift */,
 				F04976512829447600DCC4BA /* APIClient.swift */,
 				F049765328297CA900DCC4BA /* MotivationalQuote.swift */,
+				F0497658282AEEA100DCC4BA /* Quote+Extensions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -209,7 +212,7 @@
 		F0497657282AEAA300DCC4BA /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				F0497655282AE7FE00DCC4BA /* Errorable.swift */,
+				F0497655282AE7FE00DCC4BA /* ErrorHandler.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -356,7 +359,7 @@
 				F080C4452816CE8F00DEB4CE /* CollectionsViewController+TableView.swift in Sources */,
 				016849C22812A49300436B3C /* CollectionsViewController.swift in Sources */,
 				F080999428259F4E00902DFC /* CollecionArrayTransformers.swift in Sources */,
-				F0497656282AE7FE00DCC4BA /* Errorable.swift in Sources */,
+				F0497656282AE7FE00DCC4BA /* ErrorHandler.swift in Sources */,
 				F0C1E9172824569600DF8B63 /* ManageViewController.swift in Sources */,
 				016849F528154C0100436B3C /* CollectionTableViewCell.swift in Sources */,
 				F049765028291A3C00DCC4BA /* FetchQuoteViewController.swift in Sources */,
@@ -368,6 +371,7 @@
 				F08099922825903000902DFC /* CollectionTabBarViewController.swift in Sources */,
 				F0C1E9072821139200DF8B63 /* QuotesViewController.swift in Sources */,
 				F049765428297CA900DCC4BA /* MotivationalQuote.swift in Sources */,
+				F0497659282AEEA100DCC4BA /* Quote+Extensions.swift in Sources */,
 				F049764E2828F12600DCC4BA /* Collection+Extensions.swift in Sources */,
 				016849C82812A49300436B3C /* happierReminders.xcdatamodeld in Sources */,
 				F0C1E9092822F36900DF8B63 /* AddQuoteViewController.swift in Sources */,

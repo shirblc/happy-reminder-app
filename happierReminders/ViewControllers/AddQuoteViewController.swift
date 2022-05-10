@@ -99,7 +99,6 @@ class AddQuoteViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @objc func addQuote(_ sender: Any) {
         dataManager.backgroundContext.perform {
             let newQuote = Quote(context: self.dataManager.backgroundContext)
-            newQuote.addedAt = Date()
             newQuote.collection = self.dataManager.backgroundContext.object(with: self.collection.objectID) as? Collection
             self.setUpAndSaveQuote(quoteToSave: newQuote)
         }
@@ -130,7 +129,9 @@ class AddQuoteViewController: UIViewController, UIPickerViewDataSource, UIPicker
                 quoteToSave.type = quoteType
                 
                 self.dataManager.saveContext(useViewContext: false, errorCallback: {
-                    error in self.showErrorAlert(error: error.localizedDescription, retryHandler: nil)
+                    error in
+                    self.quoteSaved = false
+                    self.showErrorAlert(error: error.localizedDescription, retryHandler: nil)
                 })
                 
                 // if the quote was saved, go back to the quotes VC
