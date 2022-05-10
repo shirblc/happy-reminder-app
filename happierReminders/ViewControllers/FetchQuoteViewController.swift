@@ -17,6 +17,8 @@ class FetchQuoteViewController: UIViewController, ErrorHandler {
     @IBOutlet weak var typeSelect: Select!
     @IBOutlet weak var quoteLabel: UILabel!
     @IBOutlet weak var sourceLabel: UILabel!
+    @IBOutlet weak var tryAnotherButton: UIButton!
+    @IBOutlet weak var saveQuoteButton: UIButton!
     
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -39,6 +41,8 @@ class FetchQuoteViewController: UIViewController, ErrorHandler {
                 DispatchQueue.main.async {
                     self.quoteLabel.text = quote.text
                     self.sourceLabel.text = quote.source
+                    self.tryAnotherButton.isEnabled = true
+                    self.saveQuoteButton.isEnabled = true
                 }
             } catch {
                 if let error = error as? HTTPError, let errorDescription = error.errorDescription {

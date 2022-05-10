@@ -302,12 +302,12 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JPV-HN-5py">
                                         <rect key="frame" x="0.0" y="168" width="384" height="31"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvi-AG-5e6">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvi-AG-5e6">
                                                 <rect key="frame" x="0.0" y="0.0" width="192" height="31"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Try Another"/>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gtk-Ru-avw">
+                                            <button opaque="NO" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gtk-Ru-avw">
                                                 <rect key="frame" x="192" y="0.0" width="192" height="31"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Add to My Quotes"/>
@@ -333,7 +333,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="quoteLabel" destination="B8P-8w-7cm" id="osJ-gw-Qc0"/>
+                        <outlet property="saveQuoteButton" destination="Gtk-Ru-avw" id="MVb-HK-g9C"/>
                         <outlet property="sourceLabel" destination="W2L-GN-GMa" id="Xrm-Je-IAf"/>
+                        <outlet property="tryAnotherButton" destination="yvi-AG-5e6" id="DVQ-lH-YOr"/>
                         <outlet property="typeSelect" destination="xlx-e3-iCz" id="byT-Gy-9g1"/>
                     </connections>
                 </viewController>
