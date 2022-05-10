@@ -279,7 +279,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="zZ2-tD-pKh">
-                                <rect key="frame" x="15" y="96" width="384" height="199"/>
+                                <rect key="frame" x="15" y="96" width="384" height="225"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="uMy-AY-bAh">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="31"/>
@@ -298,7 +298,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ZCA-gq-rSv">
-                                        <rect key="frame" x="0.0" y="71" width="384" height="57"/>
+                                        <rect key="frame" x="0.0" y="71" width="384" height="83"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Select quote type to fetch and display a quote" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8P-8w-7cm">
                                                 <rect key="frame" x="8" y="0.0" width="368.5" height="21.5"/>
@@ -312,10 +312,16 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5JJ-SY-03i">
+                                                <rect key="frame" x="192" y="83" width="0.0" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JPV-HN-5py">
-                                        <rect key="frame" x="0.0" y="168" width="384" height="31"/>
+                                        <rect key="frame" x="0.0" y="194" width="384" height="31"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvi-AG-5e6">
                                                 <rect key="frame" x="0.0" y="0.0" width="192" height="31"/>
@@ -361,6 +367,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="Tqi-DH-TUL" id="rpI-KF-ghX"/>
+                        <outlet property="apiCreditLabel" destination="5JJ-SY-03i" id="7YT-bG-zkD"/>
                         <outlet property="overlayView" destination="u1J-hb-6UM" id="dt6-NS-QZv"/>
                         <outlet property="quoteLabel" destination="B8P-8w-7cm" id="osJ-gw-Qc0"/>
                         <outlet property="saveQuoteButton" destination="Gtk-Ru-avw" id="MVb-HK-g9C"/>

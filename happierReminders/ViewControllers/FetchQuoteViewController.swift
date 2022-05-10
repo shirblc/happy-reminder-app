@@ -10,6 +10,7 @@ import UIKit
 class FetchQuoteViewController: UIViewController, ErrorHandler {
     // MARK: Variables & Constants
     let optionsMapping: [Int: APIClient.apis] = [0: .Affirmation, 1: .Insperational, 2: .Motivational]
+    let creditMapping = [0: "the Affirmations API (github.com/annthurium/affirmations)", 1: "the Quotable API (github.com/lukePeavey/quotable)", 2: "the Go Quotes API (github.com/amsavarthan/goquotes-api)"]
     var dataManager: DataManager!
     var collection: Collection!
     var currentQuote: QuoteData?
@@ -17,6 +18,7 @@ class FetchQuoteViewController: UIViewController, ErrorHandler {
     @IBOutlet weak var typeSelect: Select!
     @IBOutlet weak var quoteLabel: UILabel!
     @IBOutlet weak var sourceLabel: UILabel!
+    @IBOutlet weak var apiCreditLabel: UILabel!
     @IBOutlet weak var tryAnotherButton: UIButton!
     @IBOutlet weak var saveQuoteButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -39,6 +41,7 @@ class FetchQuoteViewController: UIViewController, ErrorHandler {
         let selectedQuoteType = optionsMapping[typeSelect.selectedDays[0]]
         activityIndicator.startAnimating()
         overlayView.isHidden = false
+        apiCreditLabel.text = "Quote provided by \(creditMapping[typeSelect.selectedDays[0]]!)"
         
         Task {
             do {
