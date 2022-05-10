@@ -26,6 +26,8 @@ class FetchQuoteViewController: UIViewController, ErrorHandler {
         typeSelect.setSelectData(menuTitle: "Select Quote Type", multipleSelect: false, options: ["Affirmation": 0, "Insperational": 1, "Motivational": 2])
         typeSelect.addTarget(self, action: #selector(fetchQuote), for: .valueChanged)
         tryAnotherButton.addTarget(self, action: #selector(fetchQuote), for: .touchUpInside)
+        saveQuoteButton.titleLabel?.textAlignment = .center
+        tryAnotherButton.titleLabel?.textAlignment = .center
     }
     
     // MARK: Functionality
