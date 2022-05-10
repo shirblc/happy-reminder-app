@@ -13,7 +13,7 @@ class AddQuoteViewController: UIViewController, UIPickerViewDataSource, UIPicker
     var collection: Collection!
     var quote: Quote?
     var quoteSaved: Bool = true
-    let datePickerOptions = ["Affirmation", "Insperational", "Motivational", "Personal", "Zen"]
+    let datePickerOptions = ["Affirmation", "Insperational", "Motivational", "Personal"]
     @IBOutlet weak var quoteTextTextField: UITextField!
     @IBOutlet weak var quoteSourceTextField: UITextField!
     @IBOutlet weak var quoteTypePicker: UIPickerView!
