@@ -174,19 +174,34 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gZf-4R-gNr">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                            </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Ub5-76-04u">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TIZ-ST-Vap"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="gZf-4R-gNr" firstAttribute="bottom" secondItem="TIZ-ST-Vap" secondAttribute="bottom" id="P88-AZ-mPo"/>
                             <constraint firstItem="wTb-bq-03z" firstAttribute="leading" secondItem="TIZ-ST-Vap" secondAttribute="leading" constant="15" id="Q4x-pQ-5xS"/>
+                            <constraint firstItem="gZf-4R-gNr" firstAttribute="leading" secondItem="TIZ-ST-Vap" secondAttribute="leading" id="Utq-mj-CCq"/>
                             <constraint firstAttribute="trailing" secondItem="wTb-bq-03z" secondAttribute="trailing" constant="15" id="Wje-7S-B4S"/>
+                            <constraint firstItem="gZf-4R-gNr" firstAttribute="top" secondItem="tBx-NM-ZNi" secondAttribute="topMargin" id="aaY-eP-GUE"/>
                             <constraint firstItem="wTb-bq-03z" firstAttribute="top" secondItem="TIZ-ST-Vap" secondAttribute="top" id="gqZ-cY-5g6"/>
+                            <constraint firstItem="Ub5-76-04u" firstAttribute="centerX" secondItem="tBx-NM-ZNi" secondAttribute="centerX" id="m2m-YN-mId"/>
+                            <constraint firstItem="gZf-4R-gNr" firstAttribute="trailing" secondItem="TIZ-ST-Vap" secondAttribute="trailing" id="ry7-er-o6V"/>
+                            <constraint firstItem="Ub5-76-04u" firstAttribute="centerY" secondItem="tBx-NM-ZNi" secondAttribute="centerY" id="u2a-XB-bpc"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Manage" image="gearshape" catalog="system" id="Qo2-FM-5Mt"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="Ub5-76-04u" id="OV5-FF-PV5"/>
                         <outlet property="daysSelect" destination="tfL-sX-Blz" id="IJh-gu-89g"/>
                         <outlet property="nameTextField" destination="MOO-xn-TBc" id="K0u-mL-ruJ"/>
+                        <outlet property="overlayView" destination="gZf-4R-gNr" id="AxF-1p-Cbp"/>
                         <outlet property="saveButton" destination="jNo-fN-w1J" id="tgo-Uu-Xm7"/>
                         <outlet property="sendNotificationsSwitch" destination="SGb-Dn-EGG" id="Ta4-fs-IsP"/>
                         <outlet property="timeSelectionPicker" destination="Izb-Kw-4Fe" id="AIV-wQ-hM6"/>
@@ -319,19 +334,34 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u1J-hb-6UM">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                            </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Tqi-DH-TUL">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="swO-Am-S61"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="swO-Am-S61" firstAttribute="bottom" secondItem="u1J-hb-6UM" secondAttribute="bottom" id="0XG-wV-TBR"/>
+                            <constraint firstItem="u1J-hb-6UM" firstAttribute="leading" secondItem="swO-Am-S61" secondAttribute="leading" id="D9l-fZ-flX"/>
+                            <constraint firstItem="u1J-hb-6UM" firstAttribute="top" secondItem="swO-Am-S61" secondAttribute="top" id="HdQ-h2-6zC"/>
                             <constraint firstAttribute="trailing" secondItem="zZ2-tD-pKh" secondAttribute="trailing" constant="15" id="Pca-e4-lUJ"/>
                             <constraint firstItem="zZ2-tD-pKh" firstAttribute="top" secondItem="swO-Am-S61" secondAttribute="top" constant="8" id="XYw-Z4-t5q"/>
+                            <constraint firstItem="Tqi-DH-TUL" firstAttribute="centerX" secondItem="27d-Hd-2QK" secondAttribute="centerX" id="YVg-Aq-qkF"/>
                             <constraint firstItem="zZ2-tD-pKh" firstAttribute="leading" secondItem="swO-Am-S61" secondAttribute="leading" constant="15" id="aFj-eN-vC5"/>
+                            <constraint firstItem="u1J-hb-6UM" firstAttribute="trailing" secondItem="swO-Am-S61" secondAttribute="trailing" id="g2n-hm-r17"/>
+                            <constraint firstItem="Tqi-DH-TUL" firstAttribute="centerY" secondItem="27d-Hd-2QK" secondAttribute="centerY" id="zye-HK-j6c"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Fetch Quote" id="pDe-Rc-p18">
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="KAp-rB-zor"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="Tqi-DH-TUL" id="rpI-KF-ghX"/>
+                        <outlet property="overlayView" destination="u1J-hb-6UM" id="dt6-NS-QZv"/>
                         <outlet property="quoteLabel" destination="B8P-8w-7cm" id="osJ-gw-Qc0"/>
                         <outlet property="saveQuoteButton" destination="Gtk-Ru-avw" id="MVb-HK-g9C"/>
                         <outlet property="sourceLabel" destination="W2L-GN-GMa" id="Xrm-Je-IAf"/>
@@ -400,18 +430,24 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="9d8-TO-plj">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rUY-LI-lTL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="9d8-TO-plj" firstAttribute="centerY" secondItem="zRm-WR-JjP" secondAttribute="centerY" id="5Fx-Or-PQO"/>
                             <constraint firstItem="P2N-N1-WmU" firstAttribute="bottom" secondItem="rUY-LI-lTL" secondAttribute="bottom" constant="8" id="60c-ry-6Mn"/>
                             <constraint firstItem="P2N-N1-WmU" firstAttribute="leading" secondItem="rUY-LI-lTL" secondAttribute="leading" constant="8" id="BjU-ZI-ZdM"/>
                             <constraint firstItem="P2N-N1-WmU" firstAttribute="trailing" secondItem="rUY-LI-lTL" secondAttribute="trailing" constant="-8" id="CbK-I1-d4q"/>
+                            <constraint firstItem="9d8-TO-plj" firstAttribute="centerX" secondItem="zRm-WR-JjP" secondAttribute="centerX" id="cDy-hr-dbS"/>
                             <constraint firstItem="P2N-N1-WmU" firstAttribute="top" secondItem="rUY-LI-lTL" secondAttribute="top" constant="8" id="f9H-mB-GlU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Quote" id="4jj-P6-px9"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="9d8-TO-plj" id="14U-bl-tK9"/>
                         <outlet property="addButton" destination="aEm-zC-w25" id="SFo-9c-zKb"/>
                         <outlet property="quoteSourceTextField" destination="tFr-z3-Ox9" id="5d5-kg-PPx"/>
                         <outlet property="quoteTextTextField" destination="QxX-gY-y1B" id="EHg-N1-FuR"/>
@@ -465,6 +501,9 @@
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="quote.bubble" catalog="system" width="128" height="110"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

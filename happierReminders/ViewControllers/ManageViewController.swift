@@ -16,6 +16,8 @@ class ManageViewController: UIViewController, ErrorHandler {
     @IBOutlet weak var timeSelectionPicker: UIDatePicker!
     @IBOutlet weak var daysSelect: Select!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var overlayView: UIView!
     
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -91,6 +93,9 @@ class ManageViewController: UIViewController, ErrorHandler {
     // saveSettings
     // Saves the settings
     @IBAction func saveSettings(_ sender: UIButton) {
+        activityIndicator.startAnimating()
+        overlayView.isHidden = false
+        
         Task {
             let newName = nameTextField.text
             var sendNotifications = sendNotificationsSwitch.isOn
@@ -127,6 +132,11 @@ class ManageViewController: UIViewController, ErrorHandler {
                 self.dataManager.saveContext(useViewContext: false, errorCallback: { error in
                     self.showErrorAlert(error: error.localizedDescription, retryHandler: nil)
                 })
+                
+                DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
+                    self.overlayView.isHidden = true
+                }
             }
         }
     }

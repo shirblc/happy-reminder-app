@@ -19,6 +19,8 @@ class FetchQuoteViewController: UIViewController, ErrorHandler {
     @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var tryAnotherButton: UIButton!
     @IBOutlet weak var saveQuoteButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var overlayView: UIView!
     
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -35,6 +37,8 @@ class FetchQuoteViewController: UIViewController, ErrorHandler {
     // Fetches a new quote based on the selected option
     @objc func fetchQuote(_ sender: UIButton) {
         let selectedQuoteType = optionsMapping[typeSelect.selectedDays[0]]
+        activityIndicator.startAnimating()
+        overlayView.isHidden = false
         
         Task {
             do {
@@ -46,6 +50,8 @@ class FetchQuoteViewController: UIViewController, ErrorHandler {
                     self.sourceLabel.text = quote.source
                     self.tryAnotherButton.isEnabled = true
                     self.saveQuoteButton.isEnabled = true
+                    self.activityIndicator.stopAnimating()
+                    self.overlayView.isHidden = true
                 }
             } catch {
                 if let error = error as? HTTPError, let errorDescription = error.errorDescription {
@@ -61,6 +67,8 @@ class FetchQuoteViewController: UIViewController, ErrorHandler {
     // Adds the selected quote to the collection
     @IBAction func addQuote(_ sender: Any) {
         guard let currentQuote = currentQuote else { return }
+        
+        activityIndicator.startAnimating()
 
         dataManager.backgroundContext.perform {
             let bgContextCollection = self.dataManager.backgroundContext.object(with: self.collection.objectID) as! Collection
@@ -75,6 +83,10 @@ class FetchQuoteViewController: UIViewController, ErrorHandler {
                 self.quoteSaved = false
                 self.showErrorAlert(error: error.localizedDescription, retryHandler: nil)
             })
+            
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
+            }
             
             // if the quote was saved, go back to the quotes VC
             if(self.quoteSaved) {

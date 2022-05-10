@@ -18,6 +18,7 @@ class AddQuoteViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet weak var quoteSourceTextField: UITextField!
     @IBOutlet weak var quoteTypePicker: UIPickerView!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -97,6 +98,8 @@ class AddQuoteViewController: UIViewController, UIPickerViewDataSource, UIPicker
     // addQuote
     // Adds a new quote
     @objc func addQuote(_ sender: Any) {
+        activityIndicator.startAnimating()
+        
         dataManager.backgroundContext.perform {
             let newQuote = Quote(context: self.dataManager.backgroundContext)
             newQuote.collection = self.dataManager.backgroundContext.object(with: self.collection.objectID) as? Collection
@@ -108,6 +111,8 @@ class AddQuoteViewController: UIViewController, UIPickerViewDataSource, UIPicker
     // Edits an existing quote
     @objc func editQuote(_ sender: Any) {
         guard let quote = quote else { return }
+        
+        activityIndicator.startAnimating()
 
         dataManager.backgroundContext.perform {
             let editedQuote = self.dataManager.backgroundContext.object(with: quote.objectID) as! Quote
@@ -133,6 +138,10 @@ class AddQuoteViewController: UIViewController, UIPickerViewDataSource, UIPicker
                     self.quoteSaved = false
                     self.showErrorAlert(error: error.localizedDescription, retryHandler: nil)
                 })
+                
+                DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
+                }
                 
                 // if the quote was saved, go back to the quotes VC
                 if(self.quoteSaved) {
