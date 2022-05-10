@@ -174,8 +174,7 @@ class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate
     func deleteQuote(indexPath: IndexPath) {
         dataManager.viewContext.perform {
             let quoteToDelete = self.quotesFRC.object(at: indexPath)
-            self.dataManager.viewContext.delete(quoteToDelete)
-            self.dataManager.saveContext(useViewContext: true) { error in
+            self.dataManager.deleteManagedObject(object: quoteToDelete, useViewContext: true) { error in
                 self.showErrorAlert(error: error.localizedDescription, retryHandler: nil)
             }
         }
