@@ -25,13 +25,14 @@ class FetchQuoteViewController: UIViewController, ErrorHandler {
         super.viewDidLoad()
         typeSelect.setSelectData(menuTitle: "Select Quote Type", multipleSelect: false, options: ["Affirmation": 0, "Insperational": 1, "Motivational": 2])
         typeSelect.addTarget(self, action: #selector(fetchQuote), for: .valueChanged)
+        tryAnotherButton.addTarget(self, action: #selector(fetchQuote), for: .touchUpInside)
     }
     
     // MARK: Functionality
     // fetchQuote
     // Fetches a new quote based on the selected option
-    @objc func fetchQuote(_ sender: Select) {
-        let selectedQuoteType = optionsMapping[sender.selectedDays[0]]
+    @objc func fetchQuote(_ sender: UIButton) {
+        let selectedQuoteType = optionsMapping[typeSelect.selectedDays[0]]
         
         Task {
             do {
