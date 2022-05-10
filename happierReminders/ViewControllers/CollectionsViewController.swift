@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 
-class CollectionsViewController: UIViewController, NSFetchedResultsControllerDelegate {
+class CollectionsViewController: UIViewController, NSFetchedResultsControllerDelegate, ErrorHandler {
     // MARK: Variables & Constants
     var dataManager: DataManager!
     var collectionsFRC: NSFetchedResultsController<Collection>!
@@ -53,7 +53,7 @@ class CollectionsViewController: UIViewController, NSFetchedResultsControllerDel
             try collectionsFRC.performFetch()
             collectionsFRC.delegate = self
         } catch {
-            showErrorAlert(error: error, retryHandler: setupFetchedResultsController)
+            showErrorAlert(error: error.localizedDescription, retryHandler: setupFetchedResultsController)
         }
     }
     
@@ -83,19 +83,6 @@ class CollectionsViewController: UIViewController, NSFetchedResultsControllerDel
     }
     
     // MARK: Helpers
-    // showErrorAlert
-    // Shows an error alert
-    func showErrorAlert(error: Error, retryHandler: (() -> Void)?) {
-        DispatchQueue.main.async {
-            let errorAlert = AlertFactory.createErrorAlert(error: error.localizedDescription, dismissHandler: { _ in
-                AlertFactory.activeAlert = nil
-                self.dismiss(animated: true)
-            }, retryHandler: retryHandler)
-            AlertFactory.activeAlert = errorAlert
-            self.present(errorAlert, animated: false)
-        }
-    }
-    
     // prepare for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "viewCollectionSegue" {
@@ -129,7 +116,7 @@ class CollectionsViewController: UIViewController, NSFetchedResultsControllerDel
             collection.uuid = UUID()
             
             self.dataManager.saveContext(useViewContext: true) { error in
-                self.showErrorAlert(error: error) {
+                self.showErrorAlert(error: error.localizedDescription) {
                     self.addCollection(title: title)
                 }
             }
@@ -159,7 +146,7 @@ class CollectionsViewController: UIViewController, NSFetchedResultsControllerDel
             } completionHandler: {
                 let collectionToDelete = self.collectionsFRC.object(at: indexPath)
                 self.dataManager.deleteManagedObject(object: collectionToDelete, useViewContext: true) { error in
-                    self.showErrorAlert(error: error, retryHandler: nil)
+                    self.showErrorAlert(error: error.localizedDescription, retryHandler: nil)
                 }
                 self.dismiss(animated: true)
             }

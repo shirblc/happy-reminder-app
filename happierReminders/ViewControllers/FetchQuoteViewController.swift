@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FetchQuoteViewController: UIViewController {
+class FetchQuoteViewController: UIViewController, ErrorHandler {
     // MARK: Variables & Constants
     let optionsMapping: [Int: APIClient.apis] = [0: .Affirmation, 1: .Insperational, 2: .Motivational]
     var dataManager: DataManager!
@@ -39,25 +39,12 @@ class FetchQuoteViewController: UIViewController {
                 }
             } catch {
                 if let error = error as? HTTPError, let errorDescription = error.errorDescription {
-                    self.showErrorAlert(error: errorDescription)
+                    self.showErrorAlert(error: errorDescription, retryHandler: nil)
                 } else {
-                    self.showErrorAlert(error: error.localizedDescription)
+                    self.showErrorAlert(error: error.localizedDescription, retryHandler: nil)
                 }
             }
             
-        }
-    }
-    
-    // showErrorAlert
-    // Shows an error alert
-    func showErrorAlert(error: String) {
-        DispatchQueue.main.async {
-            let alert = AlertFactory.createErrorAlert(error: error, dismissHandler: { _ in
-                self.dismiss(animated: true)
-                AlertFactory.activeAlert = nil
-            }, retryHandler: nil)
-            AlertFactory.activeAlert = alert
-            self.present(alert, animated: true)
         }
     }
 }

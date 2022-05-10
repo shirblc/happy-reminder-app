@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddQuoteViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+class AddQuoteViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, ErrorHandler {
     // MARK: Variables & Constants
     var dataManager: DataManager!
     var collection: Collection!
@@ -93,20 +93,6 @@ class AddQuoteViewController: UIViewController, UIPickerViewDataSource, UIPicker
         }
     }
     
-    // showErrorAlert
-    // Shows an error alert
-    func showErrorAlert(error: Error) {
-        DispatchQueue.main.async {
-            let alert = AlertFactory.createErrorAlert(error: error.localizedDescription, dismissHandler: { _ in
-                self.dismiss(animated: true)
-                AlertFactory.activeAlert = nil
-                self.quoteSaved = false
-            }, retryHandler: nil)
-            AlertFactory.activeAlert = alert
-            self.present(alert, animated: true)
-        }
-    }
-    
     // MARK: Quote Manipulation
     // addQuote
     // Adds a new quote
@@ -143,7 +129,9 @@ class AddQuoteViewController: UIViewController, UIPickerViewDataSource, UIPicker
                 quoteToSave.source = quoteSource
                 quoteToSave.type = quoteType
                 
-                self.dataManager.saveContext(useViewContext: false, errorCallback: self.showErrorAlert)
+                self.dataManager.saveContext(useViewContext: false, errorCallback: {
+                    error in self.showErrorAlert(error: error.localizedDescription, retryHandler: nil)
+                })
                 
                 // if the quote was saved, go back to the quotes VC
                 if(self.quoteSaved) {

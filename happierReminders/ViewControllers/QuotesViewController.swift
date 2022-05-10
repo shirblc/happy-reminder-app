@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 
-class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource {
+class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource, ErrorHandler {
     // MARK: Variables & Constants
     var dataManager: DataManager!
     var collection: Collection!
@@ -67,7 +67,7 @@ class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate
             try quotesFRC.performFetch()
             quotesFRC.delegate = self
         } catch {
-            showErrorAlert(error: error, retryHandler: setupFetchedResultsController)
+            showErrorAlert(error: error.localizedDescription, retryHandler: setupFetchedResultsController)
         }
     }
     
@@ -139,19 +139,6 @@ class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate
     }
     
     // MARK: Utils
-    // showErrorAlert
-    // Shows an error alert
-    func showErrorAlert(error: Error, retryHandler: (() -> Void)?) {
-        DispatchQueue.main.async {
-            let alert = AlertFactory.createErrorAlert(error: error.localizedDescription, dismissHandler: { _ in
-                self.dismiss(animated: true)
-                AlertFactory.activeAlert = nil
-            }, retryHandler: retryHandler)
-            AlertFactory.activeAlert = alert
-            self.present(alert, animated: true)
-        }
-    }
-    
     // startEdit
     // Starts editing mode
     @objc func startEdit() {
@@ -189,7 +176,7 @@ class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate
             let quoteToDelete = self.quotesFRC.object(at: indexPath)
             self.dataManager.viewContext.delete(quoteToDelete)
             self.dataManager.saveContext(useViewContext: true) { error in
-                self.showErrorAlert(error: error, retryHandler: nil)
+                self.showErrorAlert(error: error.localizedDescription, retryHandler: nil)
             }
         }
     }

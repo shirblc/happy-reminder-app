@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ManageViewController: UIViewController {
+class ManageViewController: UIViewController, ErrorHandler {
     // MARK: Variables & Constants
     var collection: Collection!
     var dataManager: DataManager!
@@ -125,7 +125,7 @@ class ManageViewController: UIViewController {
                 bgContextCollection.scheduledNotifications = notificationIDs as NSArray
                 
                 self.dataManager.saveContext(useViewContext: false, errorCallback: { error in
-                    self.showErrorAlert(error: error.localizedDescription)
+                    self.showErrorAlert(error: error.localizedDescription, retryHandler: nil)
                 })
             }
         }
@@ -137,28 +137,15 @@ class ManageViewController: UIViewController {
         // if there's a quote, try to schedule it
         let notificationData = UserNotificationData(daysOfWeek: selectedDays, time: time, collection: collection)
         let notificationIDs = await NotificationController.shared.scheduleNotifications(notificationsData: notificationData, errorHandler: { errorStr in
-            self.showErrorAlert(error: errorStr)
+            self.showErrorAlert(error: errorStr, retryHandler: nil)
         }, existingNotifications: existingNotifications)
         
         if(notificationIDs.count > 0) {
             return notificationIDs
         // otherwise alert the user we can't schedule notifications, but save the preferences anyway
         } else {
-            showErrorAlert(error: "Warning: Can't schedule notifications without quotes. Your preferences will be saved, but no notifications will be sent until quotes are added.")
+            showErrorAlert(error: "Warning: Can't schedule notifications without quotes. Your preferences will be saved, but no notifications will be sent until quotes are added.", retryHandler: nil)
             return []
-        }
-    }
-    
-    // showErrorAlert
-    // Shows an error alert
-    func showErrorAlert(error: String) {
-        DispatchQueue.main.async {
-            let alert = AlertFactory.createErrorAlert(error: error, dismissHandler: { _ in
-                self.dismiss(animated: true)
-                AlertFactory.activeAlert = nil
-            }, retryHandler: nil)
-            AlertFactory.activeAlert = alert
-            self.present(alert, animated: true)
         }
     }
 }
