@@ -52,6 +52,9 @@ class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate
             let fetchQuoteVC = segue.destination as! FetchQuoteViewController
             fetchQuoteVC.dataManager = self.dataManager
             fetchQuoteVC.collection = self.collection
+        } else if(segue.identifier == "showQuoteSegue") {
+            let viewQuoteVC = segue.destination as! ViewQuoteViewController
+            viewQuoteVC.quote = sender as? Quote
         }
     }
     
@@ -109,6 +112,10 @@ class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate
             self.performSegue(withIdentifier: "addQuoteSegue", sender: self.quotesFRC.object(at: indexPath))
         }
         return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showQuoteSegue", sender: quotesFRC.object(at: indexPath))
     }
     
     // MARK: NSFetchedResultsControllerDelegate
