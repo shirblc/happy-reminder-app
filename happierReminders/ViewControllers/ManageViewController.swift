@@ -144,7 +144,19 @@ class ManageViewController: UIViewController, ErrorHandler {
     // scheduleNotifications
     // Build the notification data and trigger sending notifications
     func scheduleNotifications(selectedDays: [Int], time: String, collectionID: String, existingNotifications: [String]?) async -> [String] {
-        // if there's a quote, try to schedule it
+        // Make sure the user selected days
+        guard selectedDays.count > 0 else {
+            showErrorAlert(error: "Select days in order to send notifications. Your preferences will be saved, but no notifications will be sent until days are selected.", retryHandler: nil)
+            return []
+        }
+        
+        // Make sure there are quotes in the collection
+        guard let quoteCount = collection.quotes?.count, quoteCount > 0 else {
+            showErrorAlert(error: "Warning: Can't schedule notifications without quotes. Your preferences will be saved, but no notifications will be sent until quotes are added.", retryHandler: nil)
+            return []
+        }
+        
+        // if everything's okay, try to schedule notifications
         let notificationData = UserNotificationData(daysOfWeek: selectedDays, time: time, collection: collection)
         let notificationIDs = await NotificationController.shared.scheduleNotifications(notificationsData: notificationData, errorHandler: { errorStr in
             self.showErrorAlert(error: errorStr, retryHandler: nil)
@@ -154,7 +166,7 @@ class ManageViewController: UIViewController, ErrorHandler {
             return notificationIDs
         // otherwise alert the user we can't schedule notifications, but save the preferences anyway
         } else {
-            showErrorAlert(error: "Warning: Can't schedule notifications without quotes. Your preferences will be saved, but no notifications will be sent until quotes are added.", retryHandler: nil)
+            showErrorAlert(error: "There was a problem scheduling notifications. Your preferences will be saved, but no notifications will be sent.", retryHandler: nil)
             return []
         }
     }
