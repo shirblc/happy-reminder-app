@@ -10,6 +10,8 @@ Happier Reminders is an app designed to send inspirational/encouraging reminders
 - Xcode
 - Optional: an iPhone/iPad running iOS/iPadOS 15 or above, if you want to test it on an actual device (rather than the simulator).
 
+Note that by Apple's design notifications don't get sent in the Simulator, so in order to test the notifications feature, you have to run the app on an iPhone/iPad.
+
 ## Installaton and Usage
 
 1. Download or clone the repo.
