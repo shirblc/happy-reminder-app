@@ -21,7 +21,6 @@ class CollectionsViewController: UIViewController, NSFetchedResultsControllerDel
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.setupFetchedResultsController()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createCollection))
         NotificationCenter.default.addObserver(self, selector: #selector(toggleContinueButton(textFieldNotification:)), name: UITextField.textDidChangeNotification, object: nil)
     }

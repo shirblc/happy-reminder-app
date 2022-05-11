@@ -22,11 +22,9 @@ class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate
         super.viewDidLoad()
         dataManager = (tabBarController as? CollectionTabBarViewController)?.dataManager
         collection = (tabBarController as? CollectionTabBarViewController)?.collection
-        setupFetchedResultsController()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
-        self.setupTopToolbar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
