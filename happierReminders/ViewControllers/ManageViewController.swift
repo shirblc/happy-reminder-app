@@ -110,7 +110,7 @@ class ManageViewController: UIViewController, ErrorHandler {
                 selectedDays = daysSelect.selectedDays
                 notificationIDs = await scheduleNotifications(selectedDays: selectedDays, time: notificationTimeStr, collectionID: collection.uuid!.uuidString, existingNotifications: collection.scheduledNotifications as? [String])
                 
-                if(notificationIDs.count > 0) {
+                if(notificationIDs.count == 0) {
                     sendNotifications = false
                 }
             } else {
