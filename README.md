@@ -31,6 +31,7 @@ The project currently contains several view controllers, custom views, controlle
 4. **ManageViewController** - Contains the manage view, which allows editing the collection's details.
 5. **AddQuoteViewController** - Contains the form for editing/adding a new quote.
 6. **FetchQuoteViewcontroller** - Contains the form for fetching a quote from the network.
+7. **ViewQuoteViewController** - Contains a simple text view and labels to show the quote, its type and its source.
 
 ### Views
 
