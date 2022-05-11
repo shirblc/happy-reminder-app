@@ -105,7 +105,12 @@ class APIClient {
             return "Remote Server resopnsed: \(errorMsg)"
         case .Motivational:
             let error = String(data: responseData, encoding: .utf8)
-            return "An error occurred while fetching the quote: \(String(describing: error))"
+            
+            if let error = error {
+                return "An error occurred while fetching the quote: \(error)"
+            } else {
+                return "An error occurred while fetching the quote."
+            }
         }
     }
 }

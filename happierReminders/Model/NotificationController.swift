@@ -63,7 +63,7 @@ class NotificationController {
             if let quote = quote {
                 // Set the notification's content
                 let notificationContent = UNMutableNotificationContent()
-                notificationContent.title = "\(String(describing: quote.type)) Reminder:"
+                notificationContent.title = "\(quote.type!) Reminder:"
                 notificationContent.body = (quote.text)!
                 
                 // Set the notification's trigger, one per day the user selected

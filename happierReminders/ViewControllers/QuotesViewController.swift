@@ -61,7 +61,7 @@ class QuotesViewController: UIViewController, NSFetchedResultsControllerDelegate
     // setupFetchedResultsController
     // Sets up the fetched results controller for the current collection
     func setupFetchedResultsController() {
-        quotesFRC = dataManager.setupFRC(managedClass: "Quote", predicate: NSPredicate(format: "collection == %@", collection), sortDescriptors: [NSSortDescriptor(key: "addedAt", ascending: false), NSSortDescriptor(key: "text", ascending: false)], cacheName: "collection\(String(describing: collection.name))Quotes")
+        quotesFRC = dataManager.setupFRC(managedClass: "Quote", predicate: NSPredicate(format: "collection == %@", collection), sortDescriptors: [NSSortDescriptor(key: "addedAt", ascending: false), NSSortDescriptor(key: "text", ascending: false)], cacheName: "collection\(collection.name!)Quotes")
         
         do {
             try quotesFRC.performFetch()
