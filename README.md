@@ -19,6 +19,16 @@ Note that by Apple's design notifications don't get sent in the Simulator, so in
 3. Open happierReminders.xcodeproj.
 4. Click the build button and use the app on your device / in the built-in simulator.
 
+## APIs
+
+The project currently uses three quotes APIs:
+
+1. [The Affirmations API](https://github.com/annthurium/affirmations/)
+2. [Quotable API](https://github.com/lukePeavey/quotable)
+3. [Go Quotes API](https://github.com/amsavarthan/goquotes-api)
+
+Check out the projects for more information about each of them.
+
 ## Contents
 
 The project currently contains several view controllers, custom views, controllers for data, Core Data store, and more.
