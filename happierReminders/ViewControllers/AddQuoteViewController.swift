@@ -33,6 +33,7 @@ class AddQuoteViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: nil)
     }
     
