@@ -62,6 +62,8 @@ class FetchQuoteViewController: UIViewController, ErrorHandler {
                 } else {
                     self.showErrorAlert(error: error.localizedDescription, retryHandler: nil)
                 }
+                activityIndicator.stopAnimating()
+                overlayView.isHidden = true
             }
         }
     }
